@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="GreatIndian WebDesigners — Contact Us">
+  <title>GreatIndian WebDesigners | Contact Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/maicons.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #2A1204 0%, #1A1535 100%);
+      padding: 10rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 107, 43, .18) 0%, transparent 70%);
+    }
+
+    .page-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255, 107, 43, .12);
+      border: 1px solid rgba(255, 107, 43, .3);
+      color: #FF6B2B;
+      padding: .35rem 1rem;
+      border-radius: 50rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .grad-text {
+      background: linear-gradient(90deg, #FF6B2B, #F5A623);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-info-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(42, 18, 4, .07);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      transition: transform var(--trans-base), box-shadow var(--trans-base);
+    }
+
+    .contact-info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .ci-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      background: rgba(255, 107, 43, .1);
+      color: #FF6B2B;
+    }
+
+    .contact-form-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.5rem;
+      border: 1px solid rgba(42, 18, 4, .07);
+      box-shadow: var(--shadow-md);
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      font-size: .9rem;
+      margin-bottom: .5rem;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="back-to-top"></div>
+  <header>
+    <nav class="navbar">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">GREAT<span class="text-primary">INDIAN</span></a>
+        <button class="navbar-toggler" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+            <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="ml-auto"><a href="contact.html" class="btn btn-quote">Request quote</a></div>
+        </div>
+      </div>
+    </nav>
+    <div class="page-hero">
+      <div class="container text-center">
+        <div class="badge-pill">Get In Touch</div>
+        <h1 class="display-3 mb-3" style="color:#fff;">Let's <span class="grad-text">connect</span></h1>
+        <p class="text-lg" style="color:rgba(255,255,255,.65);max-width:500px;margin:0 auto;">Have a project in mind?
+          We'd love to hear from you.</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="section">
+      <div class="container">
+        <div class="row align-items-start justify-content-between">
+
+          <!-- Contact info -->
+          <div class="col-md-5 col-lg-4 py-3 wow fadeInLeft">
+            <h2 class="display-4 mb-3">Reach out &amp; <span class="text-primary">let's talk</span></h2>
+            <div class="divider"></div>
+            <p class="mb-5 text-secondary text-lg">Whether you have a project in mind, need advice, or just want to say
+              hi — we're here.</p>
+
+            <div class="d-flex flex-column" style="gap:1.2rem;">
+              <div class="contact-info-card">
+                <div class="ci-icon"><span class="mai-map"></span></div>
+                <div>
+                  <h5 class="mb-1" style="font-size:1rem;">Location</h5>
+                  <p class="text-secondary mb-0">Hyderabad, Telangana, India</p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div class="ci-icon"><span class="mai-call"></span></div>
+                <div>
+                  <h5 class="mb-1" style="font-size:1rem;">Phone</h5>
+                  <a href="#" class="text-secondary text-decoration-none prot-phone">Connecting...</a>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div class="ci-icon"><span class="mai-mail"></span></div>
+                <div>
+                  <h5 class="mb-1" style="font-size:1rem;">Email</h5>
+                  <a href="#" class="text-secondary text-decoration-none prot-email">Connecting...</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <p class="font-weight-bold mb-3"
+                style="font-size:.85rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-secondary);">Follow
+                Us</p>
+              <div class="sosmed-button">
+                <a href="#" aria-label="Facebook" style="background:rgba(42,18,4,.08);color:#2A1204;"><span
+                    class="mai-logo-facebook-f"></span></a>
+                <a href="#" aria-label="Twitter" style="background:rgba(42,18,4,.08);color:#2A1204;"><svg
+                    xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"
+                    style="vertical-align: -0.125em;">
+                    <path
+                      d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
+                  </svg></a>
+                <a href="#" aria-label="LinkedIn" style="background:rgba(42,18,4,.08);color:#2A1204;"><span
+                    class="mai-logo-linkedin"></span></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact form -->
+          <div class="col-md-7 col-lg-7 py-3 wow fadeInRight">
+            <div class="contact-form-card">
+              <h3 class="mb-1" style="font-family:'Outfit',sans-serif;">Send a Message</h3>
+              <p class="text-secondary mb-4">We'll get back to you shortly.</p>
+              <form action="#" novalidate>
+                <div class="row">
+                  <div class="col-md-6 py-2">
+                    <label for="fname" class="form-label">First Name</label>
+                    <input type="text" id="fname" class="form-control" placeholder="John" required>
+                  </div>
+                  <div class="col-md-6 py-2">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input type="text" id="lname" class="form-control" placeholder="Doe" required>
+                  </div>
+                </div>
+                <div class="py-2">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                </div>
+                <div class="py-2">
+                  <label for="subject" class="form-label">Subject</label>
+                  <input type="text" id="subject" class="form-control" placeholder="Project Inquiry">
+                </div>
+                <div class="py-2">
+                  <label for="budget" class="form-label">Budget Range</label>
+                  <select id="budget" class="form-control">
+                    <option value="">Select a range</option>
+                    <option>Other</option>
+                    <option>under - ₹20,000</option>
+                    <option>₹20,000 - ₹50,000</option>
+                    <option>₹50,000 – ₹1,00,000</option>
+                    <option>₹1,00,000 – ₹2,00,000</option>
+                    <option>₹2,00,000 – ₹3,00,000</option>
+                    <option>₹3,00,000- ₹5,00,000</option>
+                    <option>Above ₹5,00,000</option>
+                  </select>
+                </div>
+                <div class="py-2">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea id="message" rows="5" class="form-control" placeholder="Tell us about your project..."
+                    required></textarea>
+                </div>
+                <button type="button" id="openSendModalBtn" class="btn btn-primary w-100 mt-3"
+                  style="font-size:1rem; padding:1rem;">Send Message →</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Send Options Modal -->
+    <div id="sendOptionsModal" class="modal-overlay">
+      <div class="modal-content">
+        <h4 class="mb-3" style="font-family:'Outfit',sans-serif;">Choose Send Method</h4>
+        <p class="text-secondary mb-4" style="font-size:0.9rem;">How would you like to send your inquiry?</p>
+        <div class="d-flex flex-column" style="gap:1rem;">
+          <button type="button" id="sendWhatsappBtn" class="btn w-100"
+            style="background:#25D366;color:#fff;font-weight:600;padding:0.8rem;">
+            <span class="mai-logo-whatsapp" style="font-size:1.2rem;margin-right:0.5rem;"></span> Send via WhatsApp
+          </button>
+          <button type="button" id="sendEmailBtn" class="btn w-100 btn-primary" style="font-weight:600;padding:0.8rem;">
+            <span class="mai-mail" style="font-size:1.2rem;margin-right:0.5rem;"></span> Send via Email
+          </button>
+          <button type="button" id="closeModalBtn" class="btn btn-outline w-100 mt-2"
+            style="padding:0.8rem;">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(42, 18, 4, 0.8);
+        backdrop-filter: blur(5px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--trans-base);
+      }
+
+      .modal-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal-content {
+        background: #fff;
+        border-radius: 24px;
+        padding: 2.5rem;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: var(--shadow-lg);
+        transform: translateY(20px);
+        transition: transform var(--trans-base);
+      }
+
+      .modal-overlay.active .modal-content {
+        transform: translateY(0);
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const openBtn = document.getElementById('openSendModalBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const modal = document.getElementById('sendOptionsModal');
+        const whatsappBtn = document.getElementById('sendWhatsappBtn');
+        const emailBtn = document.getElementById('sendEmailBtn');
+
+        openBtn.addEventListener('click', () => {
+          // Basic validation
+          const fname = document.getElementById('fname').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const message = document.getElementById('message').value.trim();
+          if (!fname || !email || !message) {
+            alert('Please fill out the required fields (First Name, Email, Message).');
+            return;
+          }
+          modal.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+          modal.classList.remove('active');
+        });
+
+        function getFormData() {
+          return {
+            fname: document.getElementById('fname').value.trim(),
+            lname: document.getElementById('lname').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            subject: document.getElementById('subject').value.trim() || 'Website Inquiry',
+            budget: document.getElementById('budget').value,
+            message: document.getElementById('message').value.trim()
+          };
+        }
+
+        whatsappBtn.addEventListener('click', () => {
+          const data = getFormData();
+          let text = `Hello GreatIndian WebDesigners,%0A%0AI have a new inquiry:%0A%0A`;
+          text += `*Name:* ${data.fname} ${data.lname}%0A`;
+          text += `*Email:* ${data.email}%0A`;
+          text += `*Subject:* ${data.subject}%0A`;
+          if (data.budget) text += `*Budget:* ${data.budget}%0A`;
+          text += `*Message:* ${data.message}`;
+
+          const phone = window.getProtectedPhone();
+          window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+          modal.classList.remove('active');
+        });
+
+        emailBtn.addEventListener('click', () => {
+          const data = getFormData();
+          let body = `Hello GreatIndian WebDesigners,\n\nI have a new inquiry:\n\n`;
+          body += `Name: ${data.fname} ${data.lname}\n`;
+          body += `Email: ${data.email}\n`;
+          body += `Subject: ${data.subject}\n`;
+          if (data.budget) body += `Budget: ${data.budget}\n`;
+          body += `Message:\n${data.message}`;
+
+          const to = window.getProtectedEmail();
+          window.location.href = `mailto:${to}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
+          modal.classList.remove('active');
+        });
+      });
+    </script>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row justify-content-between mb-5">
+        <div class="col-lg-4 py-3">
+          <h3 class="mb-3">Great<span class="text-primary">Indian.</span></h3>
+          <p class="mb-4" style="opacity:.7;">Premium websites for businesses that mean business.</p>
+          <div class="sosmed-button">
+            <a href="#" aria-label="Facebook"><span class="mai-logo-facebook-f"></span></a>
+            <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;">
+                <path
+                  d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z" />
+              </svg></a>
+            <a href="#" aria-label="LinkedIn"><span class="mai-logo-linkedin"></span></a>
+          </div>
+        </div>
+        <div class="col-lg-2 py-3">
+          <h5 class="mb-4">Navigation</h5>
+          <ul class="footer-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 py-3">
+          <h5 class="mb-4">Company</h5>
+          <ul class="footer-menu">
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5 class="mb-4">Stay Updated</h5>
+          <form action="#" class="mb-3">
+            <input type="email" class="form-control mb-2" placeholder="Your email" required aria-label="Email">
+            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="row pt-4" style="border-top:1px solid rgba(255,255,255,.08);">
+        <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+          <p class="mb-0" style="opacity:.5;font-size:.9rem;">&copy; 2026 <a href="https://greatindian.net"
+              class="text-white">GreatIndian WebDesigners</a>. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-right">
+          <a href="#" class="text-white mr-3" style="opacity:.5;font-size:.9rem;">Privacy</a>
+          <a href="#" class="text-white" style="opacity:.5;font-size:.9rem;">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/assets/js/theme.js" defer></script>
+</body>
+
+</html>
