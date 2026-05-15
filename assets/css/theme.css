@@ -5,9 +5,9 @@
 
 :root {
   /* === Warm Vibrant Palette: Orange + Teal + Deep Navy === */
-  --primary:       #FF6B2B;          /* vivid deep orange */
-  --primary-hover: #E8561A;
-  --primary-rgb:   255, 107, 43;
+  --primary:       #E8571E;          /* vivid deep orange - improved contrast */
+  --primary-hover: #CC4A18;
+  --primary-rgb:   232, 87, 30;
   --secondary:     #F5A623;          /* warm amber-gold */
   --secondary-rgb: 245, 166, 35;
   --accent:        #7C3AED;          /* violet accent */
@@ -16,9 +16,9 @@
   --dark-glass:    rgba(42, 18, 4, 0.80);
   --light:         #FAFAF8;          /* warm off-white */
   --light-glass:   rgba(250, 250, 248, 0.88);
-  --glass-border:  rgba(255, 107, 43, 0.18);
+  --glass-border:  rgba(232, 87, 30, 0.18);
   --text-primary:  #2A1204;
-  --text-secondary:#4B5563;
+  --text-secondary:#374151;          /* darker gray for better contrast on light bg */
   --text-light:    #FAFAF8;
   --info:          #F5A623;
 
@@ -275,7 +275,7 @@ ul {
 }
 
 .text-primary { color: var(--primary) !important; }
-.text-secondary { color: var(--secondary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
 .text-white { color: #fff !important; }
 .text-dark { color: var(--dark) !important; }
 .text-info { color: var(--info) !important; }
@@ -1014,14 +1014,14 @@ ul {
   font-family: 'Outfit', sans-serif;
   font-size: 1rem;
   font-weight: 600;
-  color: #6c757d;
+   color: var(--text-secondary);
   transition: all 0.25s ease;
   cursor: pointer;
 }
 
 .frt-tab-btn:hover {
-  background: rgba(255,107,43,0.05);
-  color: #FF6B2B;
+   background: rgba(232,87,30,0.05);
+   color: var(--primary);
 }
 
 .frt-tab-btn.active {
@@ -1159,22 +1159,22 @@ ul {
       max-width: 520px;
     }
 
-    /* ── Pill badge ──────────────────────────────────────────────── */
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(255, 107, 43, 0.12);
-      border: 1px solid rgba(255, 107, 43, 0.30);
-      color: #FF6B2B;
-      padding: 0.35rem 1rem;
-      border-radius: 50rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-    }
+     /* ── Pill badge ──────────────────────────────────────────────── */
+     .badge-pill {
+       display: inline-flex;
+       align-items: center;
+       gap: 0.4rem;
+       background: rgba(232, 87, 30, 0.12);
+       border: 1px solid rgba(232, 87, 30, 0.30);
+       color: var(--text-primary);
+       padding: 0.35rem 1rem;
+       border-radius: 50rem;
+       font-size: 0.8rem;
+       font-weight: 600;
+       letter-spacing: 0.5px;
+       text-transform: uppercase;
+       margin-bottom: 1.2rem;
+     }
 
     .badge-pill-teal {
       background: rgba(245, 166, 35, 0.10);
@@ -1370,18 +1370,18 @@ ul {
       padding: 7rem 0;
     }
 
-    /* ── btn-teal variant ────────────────────────────────────────── */
-    .btn-teal {
-      background: var(--secondary);
-      color: #fff;
-      box-shadow: var(--shadow-sm);
-    }
+     /* ── btn-teal variant ────────────────────────────────────────── */
+     .btn-teal {
+       background: var(--secondary);
+       color: var(--text-primary);
+       box-shadow: var(--shadow-sm);
+     }
 
-    .btn-teal:hover {
-      background: #00b394;
-      color: #fff;
-      transform: translateY(-2px);
-    }
+     .btn-teal:hover {
+       background: #00b394;
+       color: var(--text-primary);
+       transform: translateY(-2px);
+     }
 
     /* ── Clients strip ───────────────────────────────────────────── */
     .client-strip {
@@ -1484,14 +1484,14 @@ ul {
       background-clip: text;
     }
 
-    .conf-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.38);
-      margin-bottom: 1rem;
-    }
+     .conf-label {
+       font-size: 0.72rem;
+       font-weight: 700;
+       letter-spacing: 2px;
+       text-transform: uppercase;
+       color: rgba(255, 255, 255, 0.65);
+       margin-bottom: 1rem;
+     }
 
     .conf-headline {
       font-family: 'Outfit', sans-serif;
@@ -1509,26 +1509,26 @@ ul {
       margin-bottom: 1.5rem;
     }
 
-    .conf-tag {
-      display: inline-block;
-      background: rgba(255, 107, 43, 0.14);
-      border: 1px solid rgba(255, 107, 43, 0.35);
-      color: #FF6B2B;
-      padding: 0.28rem 0.85rem;
-      border-radius: 50rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-right: 0.4rem;
-      margin-bottom: 0.4rem;
-    }
+     .conf-tag {
+       display: inline-block;
+       background: rgba(232, 87, 30, 0.14);
+       border: 1px solid rgba(232, 87, 30, 0.35);
+       color: var(--text-primary);
+       padding: 0.28rem 0.85rem;
+       border-radius: 50rem;
+       font-size: 0.75rem;
+       font-weight: 700;
+       letter-spacing: 0.5px;
+       text-transform: uppercase;
+       margin-right: 0.4rem;
+       margin-bottom: 0.4rem;
+     }
 
-    .conf-tag.gold {
-      background: rgba(245, 166, 35, 0.12);
-      border-color: rgba(245, 166, 35, 0.35);
-      color: #F5A623;
-    }
+     .conf-tag.gold {
+       background: rgba(245, 166, 35, 0.12);
+       border-color: rgba(245, 166, 35, 0.35);
+       color: var(--text-primary);
+     }
 
     @media (max-width: 767px) {
       .conf-half {
