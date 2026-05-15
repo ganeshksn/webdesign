@@ -1176,11 +1176,11 @@ ul {
        margin-bottom: 1.2rem;
      }
 
-    .badge-pill-teal {
-      background: rgba(245, 166, 35, 0.10);
-      border-color: rgba(245, 166, 35, 0.30);
-      color: #F5A623;
-    }
+     .badge-pill-teal {
+       background: rgba(245, 166, 35, 0.10);
+       border-color: rgba(245, 166, 35, 0.30);
+       color: var(--text-primary);
+     }
 
     /* ── Stats row ───────────────────────────────────────────────── */
     .stats-row {
