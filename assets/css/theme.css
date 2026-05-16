@@ -1249,20 +1249,20 @@ ul {
       flex-shrink: 0;
     }
 
-    .feature-icon.orange {
-      background: rgba(255, 107, 43, 0.12);
-      color: #FF6B2B;
-    }
+     .feature-icon.orange {
+       background: rgba(232, 87, 30, 0.12);
+       color: var(--text-primary);
+     }
 
-    .feature-icon.teal {
-      background: rgba(245, 166, 35, 0.12);
-      color: #F5A623;
-    }
+     .feature-icon.teal {
+       background: rgba(245, 166, 35, 0.12);
+       color: var(--text-primary);
+     }
 
-    .feature-icon.violet {
-      background: rgba(124, 58, 237, 0.12);
-      color: #7C3AED;
-    }
+     .feature-icon.violet {
+       background: rgba(124, 58, 237, 0.12);
+       color: var(--text-primary);
+     }
 
     /* ── Why-us grid ─────────────────────────────────────────────── */
     .why-grid {
