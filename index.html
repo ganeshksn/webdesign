@@ -141,36 +141,13 @@
       max-width: 520px;
     }
 
-    /* ── Pill badge ──────────────────────────────────────────────── */
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(255, 107, 43, 0.12);
-      border: 1px solid rgba(255, 107, 43, 0.30);
-      color: #FF6B2B;
-      padding: 0.35rem 1rem;
-      border-radius: 50rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-    }
-
-    .badge-pill-teal {
-      background: rgba(245, 166, 35, 0.10);
-      border-color: rgba(245, 166, 35, 0.30);
-      color: #F5A623;
-    }
-
-    /* ── Stats row ───────────────────────────────────────────────── */
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2.5rem;
-      margin-top: 2.5rem;
-    }
+/* ── Stats row ───────────────────────────────────────────────── */
+     .stats-row {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 1rem;
+       margin-top: 2.5rem;
+     }
 
     .stat-item {
       color: #fff;
@@ -282,39 +259,46 @@
       flex-shrink: 0;
     }
 
-    /* ── CTA dark band ───────────────────────────────────────────── */
-    .cta-band {
-      background: linear-gradient(135deg, #351A08 0%, #2A1204 100%);
-      position: relative;
-      overflow: hidden;
-    }
+/* ── CTA dark band ───────────────────────────────────────────── */
+     .cta-band {
+       background: linear-gradient(135deg, #351A08 0%, #2A1204 100%);
+       position: relative;
+       overflow: hidden;
+     }
 
-    .cta-band::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      right: -60px;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 107, 43, 0.18) 0%, transparent 70%);
-    }
+     .cta-band::before {
+       content: '';
+       position: absolute;
+       top: -30px;
+       right: -20px;
+       width: 140px;
+       height: 140px;
+       border-radius: 50%;
+       background: radial-gradient(circle, rgba(255, 107, 43, 0.18) 0%, transparent 70%);
+     }
 
-    .cta-band::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      left: -40px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(245, 166, 35, 0.14) 0%, transparent 70%);
-    }
+     .cta-band::after {
+       content: '';
+       position: absolute;
+       bottom: -30px;
+       left: -15px;
+       width: 100px;
+       height: 100px;
+       border-radius: 50%;
+       background: radial-gradient(circle, rgba(245, 166, 35, 0.14) 0%, transparent 70%);
+     }
 
-    .cta-band .container {
-      position: relative;
-      z-index: 1;
-    }
+     @media (max-width: 767px) {
+       .cta-band::before,
+       .cta-band::after {
+         display: none;
+       }
+     }
+
+     .cta-band .container {
+       position: relative;
+       z-index: 1;
+     }
 
     /* ── Contact list ────────────────────────────────────────────── */
     .contact-chip {
@@ -365,14 +349,22 @@
       transform: translateY(-2px);
     }
 
-    /* ── Clients strip ───────────────────────────────────────────── */
-    .client-strip {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem;
-    }
+/* ── Clients strip ───────────────────────────────────────────── */
+     .client-strip {
+       display: flex;
+       overflow: hidden;
+       user-select: none;
+       gap: 2rem;
+       padding: 1.5rem 0;
+       mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+       -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+     }
+
+     @media (max-width: 767px) {
+       .client-strip {
+         gap: 1rem;
+       }
+     }
 
     .client-strip img {
       height: 28px;
@@ -406,36 +398,43 @@
       }
     }
 
-    /* ── Confidence Split Band ────────────────────────────────────── */
-    .conf-band {
-      background: linear-gradient(135deg, #351A08 0%, #2A1204 100%);
-      position: relative;
-      overflow: hidden;
-    }
+/* ── Confidence Split Band ────────────────────────────────────── */
+     .conf-band {
+       background: linear-gradient(135deg, #351A08 0%, #2A1204 100%);
+       position: relative;
+       overflow: hidden;
+     }
 
-    .conf-band::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      right: -80px;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 107, 43, 0.14) 0%, transparent 65%);
-      pointer-events: none;
-    }
+     .conf-band::before {
+       content: '';
+       position: absolute;
+       top: -60px;
+       right: -40px;
+       width: 280px;
+       height: 280px;
+       border-radius: 50%;
+       background: radial-gradient(circle, rgba(255, 107, 43, 0.14) 0%, transparent 65%);
+       pointer-events: none;
+     }
 
-    .conf-band::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      left: -60px;
-      width: 400px;
-      height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(245, 166, 35, 0.10) 0%, transparent 65%);
-      pointer-events: none;
-    }
+     .conf-band::after {
+       content: '';
+       position: absolute;
+       bottom: -40px;
+       left: -20px;
+       width: 220px;
+       height: 220px;
+       border-radius: 50%;
+       background: radial-gradient(circle, rgba(245, 166, 35, 0.10) 0%, transparent 65%);
+       pointer-events: none;
+     }
+
+     @media (max-width: 767px) {
+       .conf-band::before,
+       .conf-band::after {
+         display: none;
+       }
+     }
 
     .conf-split {
       display: flex;
@@ -444,10 +443,10 @@
       z-index: 1;
     }
 
-    .conf-half {
-      flex: 1 1 280px;
-      padding: 3rem 2.5rem;
-    }
+.conf-half {
+       flex: 1 1 280px;
+       padding: 2.5rem 1.5rem;
+     }
 
     .conf-divider {
       width: 1px;
