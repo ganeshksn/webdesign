@@ -145,20 +145,20 @@
                 <div>
                   <h5 class="mb-1" style="font-size:1rem;">Location</h5>
                   <p class="text-secondary mb-0">Hyderabad, Telangana, India</p>
-                </div>
+</div>
               </div>
               <div class="contact-info-card">
                 <div class="ci-icon"><span class="mai-call"></span></div>
                 <div>
                   <h5 class="mb-1" style="font-size:1rem;">Phone</h5>
-                  <a href="#" class="text-secondary text-decoration-none prot-phone">Connecting...</a>
+                  <span class="text-secondary prot-phone" data-part1="80" data-part2="1234" data-part3="567890">Connecting...</span>
                 </div>
               </div>
               <div class="contact-info-card">
                 <div class="ci-icon"><span class="mai-mail"></span></div>
                 <div>
                   <h5 class="mb-1" style="font-size:1rem;">Email</h5>
-                  <a href="#" class="text-secondary text-decoration-none prot-email">Connecting...</a>
+                  <span class="text-secondary prot-email" data-user="hello" data-domain="greatindian.net">Connecting...</span>
                 </div>
               </div>
             </div>
@@ -188,6 +188,9 @@
               <h3 class="mb-1" style="font-family:'Outfit',sans-serif;">Send a Message</h3>
               <p class="text-secondary mb-4">We'll get back to you shortly.</p>
               <form action="#" novalidate>
+                <div class="hpot" style="position:absolute;left:-5000px;">
+                  <label>Leave empty: <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                </div>
                 <div class="row">
                   <div class="col-md-6 py-2">
                     <label for="fname" class="form-label">First Name</label>
@@ -288,74 +291,146 @@
         transition: transform var(--trans-base);
       }
 
-      .modal-overlay.active .modal-content {
+.modal-overlay.active .modal-content {
         transform: translateY(0);
       }
     </style>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const openBtn = document.getElementById('openSendModalBtn');
-        const closeBtn = document.getElementById('closeModalBtn');
-        const modal = document.getElementById('sendOptionsModal');
-        const whatsappBtn = document.getElementById('sendWhatsappBtn');
-        const emailBtn = document.getElementById('sendEmailBtn');
-
-        openBtn.addEventListener('click', () => {
-          // Basic validation
-          const fname = document.getElementById('fname').value.trim();
-          const email = document.getElementById('email').value.trim();
-          const message = document.getElementById('message').value.trim();
-          if (!fname || !email || !message) {
-            alert('Please fill out the required fields (First Name, Email, Message).');
-            return;
-          }
-          modal.classList.add('active');
-        });
-
-        closeBtn.addEventListener('click', () => {
-          modal.classList.remove('active');
-        });
-
-        function getFormData() {
-          return {
-            fname: document.getElementById('fname').value.trim(),
-            lname: document.getElementById('lname').value.trim(),
-            email: document.getElementById('email').value.trim(),
-            subject: document.getElementById('subject').value.trim() || 'Website Inquiry',
-            budget: document.getElementById('budget').value,
-            message: document.getElementById('message').value.trim()
-          };
+      (function() {
+        'use strict';
+        
+        window.getProtectedPhone = function() {
+          const phoneEls = document.querySelectorAll('.prot-phone');
+          phoneEls.forEach(el => {
+            const p1 = el.getAttribute('data-part1') || '';
+            const p2 = el.getAttribute('data-part2') || '';
+            const p3 = el.getAttribute('data-part3') || '';
+            const phone = p1 + p2 + p3;
+            el.textContent = '+' + p1 + ' ' + p2 + ' ' + p3;
+            el.setAttribute('data-phone', phone);
+          });
+          return phoneEls[0]?.getAttribute('data-phone') || '';
+        };
+        
+        window.getProtectedEmail = function() {
+          const emailEls = document.querySelectorAll('.prot-email');
+          emailEls.forEach(el => {
+            const user = el.getAttribute('data-user') || '';
+            const domain = el.getAttribute('data-domain') || '';
+            const email = user + '@' + domain;
+            el.textContent = email;
+            el.setAttribute('data-email', email);
+          });
+          return emailEls[0]?.getAttribute('data-email') || '';
+        };
+        
+        function initBotProtection() {
+          if (typeof window.getProtectedPhone !== 'function') return;
+          window.getProtectedPhone();
+          window.getProtectedEmail();
         }
-
-        whatsappBtn.addEventListener('click', () => {
-          const data = getFormData();
-          let text = `Hello GreatIndian WebDesigners,%0A%0AI have a new inquiry:%0A%0A`;
-          text += `*Name:* ${data.fname} ${data.lname}%0A`;
-          text += `*Email:* ${data.email}%0A`;
-          text += `*Subject:* ${data.subject}%0A`;
-          if (data.budget) text += `*Budget:* ${data.budget}%0A`;
-          text += `*Message:* ${data.message}`;
-
-          const phone = window.getProtectedPhone();
-          window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-          modal.classList.remove('active');
+        
+        function checkHoneypot(form) {
+          const hp = form.querySelector('.hpot input[name="website"], .hpot input[name="human"]');
+          return !hp || hp.value === '';
+        }
+        
+        function checkTiming() {
+          const enterTime = parseInt(sessionStorage.getItem('formEnterTime') || '0');
+          return (Date.now() - enterTime) > 1000;
+        }
+        
+        function recordEnterTime() {
+          sessionStorage.setItem('formEnterTime', Date.now().toString());
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+          initBotProtection();
+          
+          const contactForm = document.querySelector('form[novalidate]');
+          const footerForm = document.querySelector('.hpot-form');
+          
+          if (contactForm) {
+            contactForm.addEventListener('focusin', recordEnterTime, { once: true });
+            
+            const openBtn = document.getElementById('openSendModalBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const modal = document.getElementById('sendOptionsModal');
+            const whatsappBtn = document.getElementById('sendWhatsappBtn');
+            const emailBtn = document.getElementById('sendEmailBtn');
+            
+            openBtn.addEventListener('click', () => {
+              if (!checkHoneypot(contactForm)) {
+                console.log('Bot detected');
+                return;
+              }
+              
+              const fname = document.getElementById('fname').value.trim();
+              const email = document.getElementById('email').value.trim();
+              const message = document.getElementById('message').value.trim();
+              
+              if (!fname || !email || !message) {
+                alert('Please fill out the required fields (First Name, Email, Message).');
+                return;
+              }
+              
+              if (!checkTiming()) {
+                alert('Please take a moment to review your submission.');
+                return;
+              }
+              
+              modal.classList.add('active');
+            });
+            
+            closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+            
+            function getFormData() {
+              return {
+                fname: document.getElementById('fname').value.trim(),
+                lname: document.getElementById('lname').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                subject: document.getElementById('subject').value.trim() || 'Website Inquiry',
+                budget: document.getElementById('budget').value,
+                message: document.getElementById('message').value.trim()
+              };
+            }
+            
+            whatsappBtn.addEventListener('click', () => {
+              const data = getFormData();
+              let text = `Hello GreatIndian WebDesigners,%0A%0AI have a new inquiry:%0A%0A`;
+              text += `*Name:* ${data.fname} ${data.lname}%0A`;
+              text += `*Email:* ${data.email}%0A`;
+              text += `*Subject:* ${data.subject}%0A`;
+              if (data.budget) text += `*Budget:* ${data.budget}%0A`;
+              text += `*Message:* ${data.message}`;
+              window.open(`https://wa.me/${window.getProtectedPhone()}?text=${text}`, '_blank');
+              modal.classList.remove('active');
+            });
+            
+            emailBtn.addEventListener('click', () => {
+              const data = getFormData();
+              let body = `Hello GreatIndian WebDesigners,\n\nI have a new inquiry:\n\n`;
+              body += `Name: ${data.fname} ${data.lname}\n`;
+              body += `Email: ${data.email}\n`;
+              body += `Subject: ${data.subject}\n`;
+              if (data.budget) body += `Budget: ${data.budget}\n`;
+              body += `Message:\n${data.message}`;
+              window.location.href = `mailto:${window.getProtectedEmail()}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
+              modal.classList.remove('active');
+            });
+          }
+          
+          if (footerForm) {
+            footerForm.addEventListener('submit', (e) => {
+              if (!checkHoneypot(footerForm)) {
+                e.preventDefault();
+                console.log('Bot detected');
+              }
+            });
+          }
         });
-
-        emailBtn.addEventListener('click', () => {
-          const data = getFormData();
-          let body = `Hello GreatIndian WebDesigners,\n\nI have a new inquiry:\n\n`;
-          body += `Name: ${data.fname} ${data.lname}\n`;
-          body += `Email: ${data.email}\n`;
-          body += `Subject: ${data.subject}\n`;
-          if (data.budget) body += `Budget: ${data.budget}\n`;
-          body += `Message:\n${data.message}`;
-
-          const to = window.getProtectedEmail();
-          window.location.href = `mailto:${to}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
-          modal.classList.remove('active');
-        });
-      });
+      })();
     </script>
   </main>
 
@@ -386,21 +461,24 @@
         </div>
         <div class="col-lg-2 py-3">
           <h5 class="mb-4">Company</h5>
-          <ul class="footer-menu">
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 py-3">
-          <h5 class="mb-4">Stay Updated</h5>
-          <form action="#" class="mb-3">
-            <input type="email" class="form-control mb-2" placeholder="Your email" required aria-label="Email">
-            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
-          </form>
-        </div>
-      </div>
+<ul class="footer-menu">
+             <li><a href="#">Careers</a></li>
+             <li><a href="#">Our Team</a></li>
+             <li><a href="#">Privacy</a></li>
+             <li><a href="#">Terms</a></li>
+           </ul>
+         </div>
+         <div class="col-lg-3 py-3">
+           <h5 class="mb-4">Stay Updated</h5>
+           <form action="#" class="mb-3 hpot-form">
+             <div class="hpot" style="position:absolute;left:-5000px;">
+               <label>Human check: <input type="text" name="human" tabindex="-1" autocomplete="off"></label>
+             </div>
+             <input type="email" class="form-control mb-2" placeholder="Your email" required aria-label="Email">
+             <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+           </form>
+         </div>
+       </div>
       <div class="row pt-4" style="border-top:1px solid rgba(255,255,255,.08);">
         <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
           <p class="mb-0" style="opacity:.5;font-size:.9rem;">&copy; 2026 <a href="https://greatindian.net"

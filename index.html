@@ -35,7 +35,7 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "GreatIndian WebDesigners",
+    "name": "GreatIndian Web Designers",
     "url": "https://webdesign.greatindian.net/",
     "logo": "https://webdesign.greatindian.net/assets/img/logo.png",
     "image": "https://webdesign.greatindian.net/assets/img/bg_image_1.png",
@@ -797,21 +797,21 @@
           <h2 class="display-3 mb-4" style="color:#fff;">Ready to build something <span
               style="background:linear-gradient(90deg,#FF6B2B,#F5A623); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">extraordinary?</span>
           </h2>
-          <p class="text-lg mb-5"
-            style="color:rgba(255,255,255,0.7); max-width:540px; margin-left:auto; margin-right:auto;">
-            Have a project in mind? Let's collaborate and create a stunning website that drives real results.
-          </p>
-          <div class="d-flex flex-wrap justify-content-center mb-5" style="gap:1rem;">
-            <div class="contact-chip">
-              <span class="icon mai-map"></span> Hyderabad, Telangana, India
-            </div>
-            <a href="#" class="contact-chip text-decoration-none prot-email" style="color:#fff;">
-              <span class="icon mai-mail"></span> <span class="c-text">Connecting...</span>
-            </a>
-            <a href="#" class="contact-chip text-decoration-none prot-phone" style="color:#fff;">
-              <span class="icon mai-call"></span> <span class="c-text">Connecting...</span>
-            </a>
-          </div>
+<p class="text-lg mb-5"
+             style="color:rgba(255,255,255,0.7); max-width:540px; margin-left:auto; margin-right:auto;">
+             Have a project in mind? Let's collaborate and create a stunning website that drives real results.
+           </p>
+           <div class="d-flex flex-wrap justify-content-center mb-5" style="gap:1rem;">
+             <div class="contact-chip">
+               <span class="icon mai-map"></span> Hyderabad, Telangana, India
+             </div>
+             <a href="#" class="contact-chip text-decoration-none prot-email" style="color:#fff;" data-user="hello" data-domain="greatindian.net">
+               <span class="icon mai-mail"></span> <span class="c-text">Connecting...</span>
+             </a>
+             <a href="#" class="contact-chip text-decoration-none prot-phone" style="color:#fff;" data-part1="80" data-part2="1234" data-part3="567890">
+               <span class="icon mai-call"></span> <span class="c-text">Connecting...</span>
+             </a>
+           </div>
           <a href="contact.html" class="btn btn-primary mr-3" style="margin-right:1rem;">Start a Project</a>
           <a href="services.html" class="btn"
             style="color:#fff; border:2px solid rgba(255,255,255,0.3); border-radius:50px; padding:0.75rem 1.5rem;">View
@@ -848,25 +848,28 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
-        <div class="col-lg-2 py-3">
-          <h5 class="mb-4">Company</h5>
-          <ul class="footer-menu">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 py-3">
-          <h5 class="mb-4">Stay Updated</h5>
-          <form action="#" class="mb-3">
-            <input type="email" class="form-control mb-2" placeholder="Enter your email" required
-              aria-label="Email address">
-            <button type="submit" class="btn btn-primary w-100">Subscribe</button>
-          </form>
-          <p style="font-size:0.8rem; opacity:0.5;">No spam. Unsubscribe anytime.</p>
-        </div>
-      </div>
+<div class="col-lg-2 py-3">
+           <h5 class="mb-4">Company</h5>
+           <ul class="footer-menu">
+             <li><a href="#">About Us</a></li>
+             <li><a href="#">Careers</a></li>
+             <li><a href="#">Our Team</a></li>
+             <li><a href="#">Privacy Policy</a></li>
+           </ul>
+         </div>
+         <div class="col-lg-3 py-3">
+           <h5 class="mb-4">Stay Updated</h5>
+           <form action="#" class="mb-3 hpot-form">
+             <div class="hpot" style="position:absolute;left:-5000px;">
+               <label>Human check: <input type="text" name="human" tabindex="-1" autocomplete="off"></label>
+             </div>
+             <input type="email" class="form-control mb-2" placeholder="Enter your email" required
+               aria-label="Email address">
+             <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+           </form>
+           <p style="font-size:0.8rem; opacity:0.5;">No spam. Unsubscribe anytime.</p>
+         </div>
+       </div>
 
       <div class="row pt-4" style="border-top:1px solid rgba(255,255,255,0.08);">
         <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
@@ -881,6 +884,62 @@
     </div>
   </footer>
 
+  <script>
+    (function() {
+      'use strict';
+      
+      window.getProtectedPhone = function() {
+        const phoneEls = document.querySelectorAll('.prot-phone');
+        phoneEls.forEach(el => {
+          const p1 = el.getAttribute('data-part1') || '';
+          const p2 = el.getAttribute('data-part2') || '';
+          const p3 = el.getAttribute('data-part3') || '';
+          const phone = p1 + p2 + p3;
+          const textSpan = el.querySelector('.c-text') || el;
+          textSpan.textContent = '+' + p1 + ' ' + p2 + ' ' + p3;
+          el.href = 'tel:' + phone;
+          el.setAttribute('data-phone', phone);
+        });
+        return phoneEls[0]?.getAttribute('data-phone') || '';
+      };
+      
+      window.getProtectedEmail = function() {
+        const emailEls = document.querySelectorAll('.prot-email');
+        emailEls.forEach(el => {
+          const user = el.getAttribute('data-user') || '';
+          const domain = el.getAttribute('data-domain') || '';
+          const email = user + '@' + domain;
+          const textSpan = el.querySelector('.c-text') || el;
+          textSpan.textContent = email;
+          el.href = 'mailto:' + email;
+          el.setAttribute('data-email', email);
+        });
+        return emailEls[0]?.getAttribute('data-email') || '';
+      };
+      
+      function checkHoneypot(form) {
+        const hp = form.querySelector('.hpot input[name="human"]');
+        return !hp || hp.value === '';
+      }
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof window.getProtectedPhone === 'function') {
+          window.getProtectedPhone();
+          window.getProtectedEmail();
+        }
+        
+        const footerForm = document.querySelector('.hpot-form');
+        if (footerForm) {
+          footerForm.addEventListener('submit', (e) => {
+            if (!checkHoneypot(footerForm)) {
+              e.preventDefault();
+              console.log('Bot detected');
+            }
+          });
+        }
+      });
+    })();
+  </script>
   <script src="/assets/js/theme.js" defer></script>
 </body>
 
