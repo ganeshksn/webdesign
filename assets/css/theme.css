@@ -981,11 +981,28 @@ main, section, .section, .section-sm, .section-lg {
 }
 
 /* Sticky Feature Button */
+#features-wrapper.expanded {
+  padding-top: 5.5rem;
+}
+
 #features-wrapper.expanded .sticky-btn-container {
-  position: sticky;
-  top: 85px;
-  z-index: 999;
-  margin-bottom: 2rem !important;
+  position: fixed;
+  top: 76px;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  margin: 0 !important;
+  padding: 0.75rem 1rem;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+#features-wrapper.expanded .sticky-btn-container.within-features-collapsible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
 }
 
 #features-wrapper.expanded .sticky-btn-container button {
@@ -996,6 +1013,7 @@ main, section, .section, .section-sm, .section-lg {
   border-color: rgba(255,107,43,0.5) !important;
   box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important;
   transform: scale(1.02);
+  pointer-events: auto;
 }
 
 /* Client Logo Items with Text */

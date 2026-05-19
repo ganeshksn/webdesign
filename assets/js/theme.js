@@ -189,8 +189,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const expandBtn = document.getElementById('btn-expand-features');
   const featuresContainer = document.getElementById('features-collapsible');
   const featuresWrapper = document.getElementById('features-wrapper');
+  const featuresButtonContainer = expandBtn ? expandBtn.closest('.sticky-btn-container') : null;
   
   if (expandBtn && featuresContainer) {
+    const syncFeaturesButtonPosition = () => {
+      if (!featuresButtonContainer) return;
+
+      const isExpanded = featuresContainer.classList.contains('expanded');
+      if (!isExpanded) {
+        featuresButtonContainer.classList.remove('within-features-collapsible');
+        return;
+      }
+
+      const topOffset = 76;
+      const bounds = featuresContainer.getBoundingClientRect();
+      const isWithinFeatures = bounds.bottom > topOffset && bounds.top < window.innerHeight;
+      featuresButtonContainer.classList.toggle('within-features-collapsible', isWithinFeatures);
+    };
+
+    window.addEventListener('scroll', syncFeaturesButtonPosition, { passive: true });
+    window.addEventListener('resize', syncFeaturesButtonPosition);
+
     expandBtn.addEventListener('click', () => {
       if (featuresContainer.style.display === 'none' || featuresContainer.style.display === '') {
         featuresContainer.style.display = 'block';
@@ -200,11 +219,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (featuresWrapper) featuresWrapper.classList.add('expanded');
         featuresContainer.style.maxHeight = (featuresContainer.scrollHeight + 100) + 'px';
         expandBtn.innerHTML = '<span class="mai-chevron-up mr-2"></span> Hide features list';
+        syncFeaturesButtonPosition();
         
         // After transition, allow responsive height
         setTimeout(() => {
           if (featuresContainer.classList.contains('expanded')) {
             featuresContainer.style.maxHeight = 'none';
+            syncFeaturesButtonPosition();
           }
         }, 850);
       } else {
@@ -214,11 +235,13 @@ document.addEventListener('DOMContentLoaded', () => {
         featuresContainer.style.maxHeight = '0';
         featuresContainer.classList.remove('expanded');
         if (featuresWrapper) featuresWrapper.classList.remove('expanded');
+        if (featuresButtonContainer) featuresButtonContainer.classList.remove('within-features-collapsible');
         expandBtn.innerHTML = '<span class="mai-layers-outline mr-2"></span> List of features we can implement';
         
         setTimeout(() => {
           if (!featuresContainer.classList.contains('expanded')) {
             featuresContainer.style.display = 'none';
+            expandBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
         }, 800);
       }
