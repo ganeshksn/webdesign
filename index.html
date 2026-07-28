@@ -430,6 +430,50 @@
       transform: scale(1.08);
     }
 
+    /* ── Google reviews ─────────────────────────────────────────── */
+    .google-rating {
+      padding: 1.15rem 1.5rem;
+      border: 1px solid rgba(42, 18, 4, 0.1);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+      color: inherit;
+      text-decoration: none;
+      transition: transform var(--trans-base), box-shadow var(--trans-base), border-color var(--trans-base);
+    }
+
+    .google-rating:hover {
+      color: inherit;
+      transform: translateY(-3px);
+      border-color: rgba(66, 133, 244, 0.35);
+      box-shadow: var(--shadow-md);
+    }
+
+    .google-rating:focus-visible {
+      outline: 3px solid rgba(66, 133, 244, 0.45);
+      outline-offset: 3px;
+    }
+
+    .google-rating__mark {
+      width: 2.5rem;
+      height: 2.5rem;
+      flex: 0 0 auto;
+    }
+
+    .google-rating__score {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #2A1204;
+    }
+
+    .google-rating__stars {
+      color: #f5a623;
+      letter-spacing: 0.12rem;
+      font-size: 1.05rem;
+    }
+
     /* ── Responsive tweaks ───────────────────────────────────────── */
     @media (max-width: 767px) {
       .hero h1 {
@@ -681,6 +725,31 @@
         </div>
       </div>
     </div>
+
+    <!-- ── GOOGLE REVIEWS ───────────────────────────────────────────── -->
+    <section class="section-sm" aria-labelledby="google-reviews-title">
+      <div class="container">
+        <a class="google-rating d-flex flex-column flex-md-row align-items-center justify-content-center text-center text-md-left" href="https://g.page/r/CSfjr1UqSw3rEAI/review" target="_blank" rel="noopener noreferrer" aria-label="Read or write a Google review for GreatIndian WebDesigners" style="gap:1.25rem;">
+          <svg class="google-rating__mark" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="#4285F4" d="M21.35 12.18c0-.71-.06-1.39-.18-2.05H12v3.88h5.24a4.48 4.48 0 0 1-1.94 2.94v2.51h3.14c1.84-1.69 2.91-4.18 2.91-7.28Z" />
+            <path fill="#34A853" d="M12 21.5c2.64 0 4.86-.87 6.48-2.36l-3.14-2.51c-.87.58-1.98.92-3.34.92-2.56 0-4.73-1.73-5.51-4.05H3.25v2.59A9.79 9.79 0 0 0 12 21.5Z" />
+            <path fill="#FBBC05" d="M6.49 13.5A5.9 5.9 0 0 1 6.18 12c0-.52.09-1.02.31-1.5V7.91H3.25A9.79 9.79 0 0 0 2.2 12c0 1.58.38 3.08 1.05 4.09l3.24-2.59Z" />
+            <path fill="#EA4335" d="M12 6.45c1.48 0 2.81.51 3.85 1.5l2.89-2.89C16.85 3.3 14.64 2.5 12 2.5a9.79 9.79 0 0 0-8.75 5.41l3.24 2.59C7.27 8.18 9.44 6.45 12 6.45Z" />
+          </svg>
+          <div>
+            <p class="text-secondary mb-1" style="font-size:.78rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">Trusted by businesses across India</p>
+            <h2 id="google-reviews-title" class="h4 mb-0">Rated excellent on Google</h2>
+          </div>
+          <div class="d-flex align-items-center" style="gap:.75rem;">
+            <strong class="google-rating__score">5.0</strong>
+            <div>
+              <div class="google-rating__stars" aria-label="5 out of 5 stars">★★★★★</div>
+
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
 
     <!-- ── FEATURES ────────────────────────────────────────────────── -->
     <div class="section bg-light">
