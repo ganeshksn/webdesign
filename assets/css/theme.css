@@ -419,6 +419,37 @@ main, section, .section, .section-sm, .section-lg {
   background: linear-gradient(90deg, #F5A623, #FF6B2B);
 }
 
+/* Header trust indicator */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.header-actions .btn-quote { margin-left: 0; }
+.gst-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.46rem 0.72rem;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 50rem;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.gst-badge span { color: #F5C45A; font-size: 0.92rem; }
+.navbar.scrolled .gst-badge {
+  color: #5b3210;
+  background: #fff8e8;
+  border-color: rgba(245,166,35,0.38);
+}
+.navbar.scrolled .gst-badge span { color: #D97706; }
+
 /* Badges */
 .badge {
   display: inline-block;
@@ -580,6 +611,10 @@ main, section, .section, .section-sm, .section-lg {
   .navbar-nav .nav-item { width: 100%; }
   .navbar-nav .nav-link { display: inline-block; padding: var(--sp-2) 0; }
   .navbar .ml-auto { margin-left: 0 !important; margin-top: var(--sp-3); width: 100%; }
+  .header-actions { flex-direction: column; align-items: stretch; gap: 0.65rem; }
+  .gst-badge { justify-content: center; background: #fff8e8; border-color: rgba(245,166,35,0.38); color: #5b3210; }
+  .gst-badge span { color: #D97706; }
+  .header-actions .btn-quote { width: 100%; }
   /* Toggler goes back to dark in scrolled state */
   .navbar.scrolled .navbar-toggler-icon,
   .navbar.scrolled .navbar-toggler-icon::before,
