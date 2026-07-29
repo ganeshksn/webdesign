@@ -193,6 +193,30 @@
       max-width: 520px;
     }
 
+    /* ── Industries ─────────────────────────────────────────────── */
+    .industries-compact { position:relative; overflow:hidden; padding:4.75rem 0; background:linear-gradient(120deg,#fffdf9 0%,#fff7ed 100%); border-top:1px solid rgba(245,166,35,.15); border-bottom:1px solid rgba(245,166,35,.15); }
+    .industries-compact::before,.industries-compact::after { content:''; position:absolute; border-radius:50%; pointer-events:none; }
+    .industries-compact::before { width:30rem; height:30rem; right:-16rem; top:-16rem; background:radial-gradient(circle,rgba(245,166,35,.16),transparent 68%); }
+    .industries-compact::after { width:20rem; height:20rem; left:-13rem; bottom:-15rem; background:radial-gradient(circle,rgba(255,107,43,.1),transparent 68%); }
+    .industries-compact .container { position:relative; z-index:1; }
+    .industry-mosaic { display:grid; grid-template-columns:1.25fr 1fr 1fr; grid-template-rows:repeat(2,1fr); gap:.85rem; position:relative; }
+    .industry-tile { min-height:145px; padding:1.15rem; border:1px solid rgba(42,18,4,.08); border-radius:20px; background:rgba(255,255,255,.82); box-shadow:0 12px 28px rgba(73,38,10,.06); transition:transform var(--trans-base),box-shadow var(--trans-base),border-color var(--trans-base); }
+    .industry-tile:hover { transform:translateY(-5px); box-shadow:0 16px 34px rgba(73,38,10,.12); border-color:rgba(255,107,43,.28); }
+    .industry-tile--featured { grid-row:span 2; display:flex; flex-direction:column; justify-content:center; padding:1.5rem; background:linear-gradient(145deg,#fff0e4,#fff9eb); border-color:rgba(255,107,43,.24); }
+    .industry-tile__icon { width:38px; height:38px; display:inline-flex; align-items:center; justify-content:center; border-radius:12px; background:#fff0e7; color:#E8571E; font-size:1.2rem; margin-bottom:.7rem; }
+    .industry-tile:nth-child(3) .industry-tile__icon { background:#fff7d9; color:#B7791F; }
+    .industry-tile:nth-child(4) .industry-tile__icon { background:#eef7f5; color:#16806e; }
+    .industry-tile:nth-child(5) .industry-tile__icon { background:#f2efff; color:#7356c8; }
+    .industry-tile--featured .industry-tile__icon { width:46px; height:46px; border-radius:14px; background:#ffe1cf; font-size:1.35rem; }
+    .industry-tile h5 { font-size:1rem; margin:0; color:#2A1204; }
+    .industry-tile--featured h5 { font-size:1.18rem; }
+    .industry-tile p { font-size:.78rem; color:var(--text-secondary); margin:.35rem 0 0; line-height:1.45; }
+    .industry-tile--featured p { font-size:.86rem; }
+    .industry-list { list-style:none; padding:0; margin:1.5rem 0 2rem; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.8rem 1.2rem; }
+    .industry-list li { display:flex; gap:.55rem; align-items:center; color:var(--text-secondary); font-size:.92rem; }
+    .industry-list span { color:#E8571E; font-size:1.1rem; }
+    @media (max-width:767px) { .industries-compact{padding:3.5rem 0;} .industry-mosaic{grid-template-columns:repeat(2,1fr);grid-template-rows:auto;} .industry-tile--featured{grid-column:span 2;grid-row:auto;} .industry-list{grid-template-columns:1fr;} }
+
 /* ── Stats row ───────────────────────────────────────────────── */
      .stats-row {
        display: flex;
@@ -787,6 +811,35 @@
         </div>
       </div>
     </div>
+
+    <!-- ── INDUSTRIES ─────────────────────────────────────────────── -->
+    <section class="section-sm industries-compact" aria-labelledby="industries-title">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5 py-3 wow fadeInLeft">
+            <div class="badge-pill mb-3">Industries We Serve</div>
+            <h2 id="industries-title" class="display-3 mb-3">Built for the way <span class="text-primary">you work</span></h2>
+            <p class="text-secondary text-lg mb-0">Different sectors, one digital standard: clear journeys, resilient technology, and measurable growth.</p>
+            <ul class="industry-list">
+              <li><span class="mai-checkmark-circle-outline"></span> Tailored user journeys</li>
+              <li><span class="mai-checkmark-circle-outline"></span> Secure, scalable builds</li>
+              <li><span class="mai-checkmark-circle-outline"></span> Search-ready foundations</li>
+              <li><span class="mai-checkmark-circle-outline"></span> WordPress expertise</li>
+            </ul>
+            <a href="about.html#industries" class="btn btn-outline">Explore industries <span class="mai-arrow-forward ml-1"></span></a>
+          </div>
+          <div class="col-lg-7 py-3 wow fadeInRight">
+            <div class="industry-mosaic">
+              <article class="industry-tile industry-tile--featured"><span class="industry-tile__icon mai-business-outline"></span><h5>Professional Services</h5><p>Credibility-led websites and lead systems for firms that sell expertise.</p></article>
+              <article class="industry-tile"><span class="industry-tile__icon mai-cart-outline"></span><h5>Commerce</h5><p>Stores that make buying simple.</p></article>
+              <article class="industry-tile"><span class="industry-tile__icon mai-medical-outline"></span><h5>Healthcare</h5><p>Clear, reassuring patient journeys.</p></article>
+              <article class="industry-tile"><span class="industry-tile__icon mai-school-outline"></span><h5>Education</h5><p>Platforms built to engage learners.</p></article>
+              <article class="industry-tile"><span class="industry-tile__icon mai-home-outline"></span><h5>Real Estate</h5><p>Listings that prompt action.</p></article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ── CONFIDENCE BAND ─────────────────────────────────────────── -->
     <div class="conf-band wow fadeInUp">
