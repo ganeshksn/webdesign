@@ -135,25 +135,29 @@
     </div>
   </div>
 
-<!-- Features Wrapper --><div id="features-wrapper" style="position: relative;"><!-- Expand Features Button --><div class="sticky-btn-container text-center mt-2 mb-5 wow fadeInUp">
-  <button id="btn-expand-features" class="btn btn-outline" style="padding: 1rem 2.5rem; font-size: 1.05rem; border-radius: 50px; background: rgba(255,107,43,0.05); color: #FF6B2B; border-color: rgba(255,107,43,0.3);">
+<!-- Feature Journey --><section id="features-wrapper" class="feature-journey"><div class="sticky-btn-container text-center mt-2 mb-5 wow fadeInUp">
+  <button id="btn-expand-features" class="btn btn-outline" aria-expanded="false" aria-controls="features-collapsible" style="padding: 1rem 2.5rem; font-size: 1.05rem; border-radius: 50px; background: rgba(255,107,43,0.05); color: #FF6B2B; border-color: rgba(255,107,43,0.3);">
     <span class="mai-layers-outline mr-2"></span> List of features we can implement
   </button>
+</div>
+<div class="journey-orbit" id="journey-orbit" aria-live="polite" aria-label="Feature category 1 of 30">
+  <strong class="journey-orbit-current">01</strong><span>/30</span>
 </div>
 
 <!-- Features Container -->
 <div class="features-collapsible" id="features-collapsible" style="display:none; overflow:hidden;">
   <div class="container pb-5">
-    <div class="section-header centered mb-5 pt-4">
+    <div class="section-header centered feature-journey-intro mb-5 pt-4">
       <div class="badge-pill mb-3">Comprehensive Capabilities</div>
       <h2 class="display-3">Master <span class="text-primary">Feature List</span></h2>
-      <p class="text-secondary text-lg">A structured overview of the integrations and modules we can build.</p>
+      <p class="text-secondary text-lg">A guided tour through the integrations and modules we can build.</p>
+      <p class="feature-journey-hint"><span class="mai-mouse-outline"></span> Scroll through each capability</p>
     </div>
     <div class="features-responsive-tabs">
   <div class="row">
     <!-- Sidebar for Desktop -->
     <div class="col-lg-4 d-none d-lg-block">
-      <div class="frt-sidebar">
+      <div class="frt-sidebar" aria-label="Feature categories">
 <button class="frt-tab-btn active" data-target="frt-cat-1">1. Authentication & User Management</button>
 <button class="frt-tab-btn " data-target="frt-cat-2">2. User Profiles</button>
 <button class="frt-tab-btn " data-target="frt-cat-3">3. Dashboard Features</button>
@@ -760,10 +764,9 @@
   </div>
 </div>
 
-    </div>
-  </div>
 </div>
 </div>
+</section>
 
 <!-- Confidence Band -->
   <div class="section" style="background:linear-gradient(135deg,#2A1204 0%,#1A1535 100%);position:relative;overflow:hidden;">

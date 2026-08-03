@@ -184,32 +184,51 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getProtectedEmail = function() { return cData.e_user + '@' + cData.e_domain; };
   window.getProtectedPhone = function() { return cData.p_code.replace('+','') + cData.p_num; };
   // ==========================================================================
-  // 6. Expand Features List
+  // 6. Expand Feature Journey
   // ==========================================================================
   const expandBtn = document.getElementById('btn-expand-features');
   const featuresContainer = document.getElementById('features-collapsible');
   const featuresWrapper = document.getElementById('features-wrapper');
   const featuresButtonContainer = expandBtn ? expandBtn.closest('.sticky-btn-container') : null;
-  
-  if (expandBtn && featuresContainer) {
-    const syncFeaturesButtonPosition = () => {
-      if (!featuresButtonContainer) return;
+  const journeyOrbit = document.getElementById('journey-orbit');
+  const journeyOrbitCurrent = journeyOrbit ? journeyOrbit.querySelector('.journey-orbit-current') : null;
+  let featureJourneyOpen = false;
 
-      const isExpanded = featuresContainer.classList.contains('expanded');
-      if (!isExpanded) {
-        featuresButtonContainer.classList.remove('within-features-collapsible');
-        return;
+  const syncFeaturesButtonPosition = () => {
+    if (!featuresButtonContainer || !featuresContainer) return;
+    const bounds = featuresContainer.getBoundingClientRect();
+    const isWithinJourney = featuresContainer.classList.contains('expanded') && bounds.bottom > 76 && bounds.top < window.innerHeight;
+    featuresButtonContainer.classList.toggle('within-feature-journey', isWithinJourney);
+    if (journeyOrbit) journeyOrbit.classList.toggle('is-visible', isWithinJourney);
+  };
+
+  window.addEventListener('scroll', syncFeaturesButtonPosition, { passive: true });
+  window.addEventListener('resize', syncFeaturesButtonPosition);
+
+  const closeFeatureJourney = () => {
+    if (!featuresContainer || !featuresContainer.classList.contains('expanded')) return;
+    featuresContainer.style.maxHeight = featuresContainer.scrollHeight + 'px';
+    void featuresContainer.offsetWidth;
+    featuresContainer.style.maxHeight = '0';
+    featuresContainer.classList.remove('expanded');
+    if (featuresWrapper) featuresWrapper.classList.remove('expanded');
+    document.body.classList.remove('feature-journey-open');
+    featureJourneyOpen = false;
+    if (featuresButtonContainer) featuresButtonContainer.classList.remove('within-feature-journey');
+    if (journeyOrbit) journeyOrbit.classList.remove('is-visible');
+    if (expandBtn) {
+      expandBtn.setAttribute('aria-expanded', 'false');
+      expandBtn.innerHTML = '<span class="mai-layers-outline mr-2"></span> List of features we can implement';
+    }
+    window.setTimeout(() => {
+      if (!featuresContainer.classList.contains('expanded')) {
+        featuresContainer.style.display = 'none';
+        if (expandBtn) expandBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
+    }, 800);
+  };
 
-      const topOffset = 76;
-      const bounds = featuresContainer.getBoundingClientRect();
-      const isWithinFeatures = bounds.bottom > topOffset && bounds.top < window.innerHeight;
-      featuresButtonContainer.classList.toggle('within-features-collapsible', isWithinFeatures);
-    };
-
-    window.addEventListener('scroll', syncFeaturesButtonPosition, { passive: true });
-    window.addEventListener('resize', syncFeaturesButtonPosition);
-
+  if (expandBtn && featuresContainer) {
     expandBtn.addEventListener('click', () => {
       if (featuresContainer.style.display === 'none' || featuresContainer.style.display === '') {
         featuresContainer.style.display = 'block';
@@ -217,55 +236,94 @@ document.addEventListener('DOMContentLoaded', () => {
         void featuresContainer.offsetWidth;
         featuresContainer.classList.add('expanded');
         if (featuresWrapper) featuresWrapper.classList.add('expanded');
+        document.body.classList.add('feature-journey-open');
+        featureJourneyOpen = true;
         featuresContainer.style.maxHeight = (featuresContainer.scrollHeight + 100) + 'px';
+        expandBtn.setAttribute('aria-expanded', 'true');
         expandBtn.innerHTML = '<span class="mai-chevron-up mr-2"></span> Hide features list';
         syncFeaturesButtonPosition();
+        window.setTimeout(() => {
+          const featureStory = document.querySelector('.features-masonry-mobile');
+          if (featureStory && featureJourneyOpen) {
+            const storyTop = window.scrollY + featureStory.getBoundingClientRect().top;
+            window.scrollTo({ top: storyTop, behavior: 'smooth' });
+          }
+        }, 120);
         
         // After transition, allow responsive height
         setTimeout(() => {
           if (featuresContainer.classList.contains('expanded')) {
             featuresContainer.style.maxHeight = 'none';
-            syncFeaturesButtonPosition();
           }
         }, 850);
       } else {
-        featuresContainer.style.maxHeight = featuresContainer.scrollHeight + 'px';
-        // force reflow
-        void featuresContainer.offsetWidth;
-        featuresContainer.style.maxHeight = '0';
-        featuresContainer.classList.remove('expanded');
-        if (featuresWrapper) featuresWrapper.classList.remove('expanded');
-        if (featuresButtonContainer) featuresButtonContainer.classList.remove('within-features-collapsible');
-        expandBtn.innerHTML = '<span class="mai-layers-outline mr-2"></span> List of features we can implement';
-        
-        setTimeout(() => {
-          if (!featuresContainer.classList.contains('expanded')) {
-            featuresContainer.style.display = 'none';
-            expandBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-        }, 800);
+        closeFeatureJourney();
       }
     });
   }
 
   // ==========================================================================
-  // 7. Feature Tabs (Desktop)
+  // 7. Feature Journey navigation and scroll state (Desktop)
   // ==========================================================================
   const tabBtns = document.querySelectorAll('.frt-tab-btn');
   const tabPanes = document.querySelectorAll('.frt-category');
 
+  const featureStory = document.querySelector('.features-masonry-mobile');
+  const desktopJourney = window.matchMedia('(min-width: 992px)');
+
+  function setActiveFeature(targetId) {
+    const activeIndex = Array.from(tabPanes).findIndex(pane => pane.id === targetId);
+    if (activeIndex < 0) return;
+    tabBtns.forEach(btn => {
+      const isActive = btn.dataset.target === targetId;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-current', isActive ? 'step' : 'false');
+      if (isActive && desktopJourney.matches) btn.scrollIntoView({ block: 'nearest' });
+    });
+    tabPanes.forEach((pane, index) => {
+      pane.classList.toggle('is-current', index === activeIndex);
+      pane.classList.toggle('is-past', index < activeIndex);
+    });
+    if (journeyOrbit && journeyOrbitCurrent) {
+      journeyOrbitCurrent.textContent = String(activeIndex + 1).padStart(2, '0');
+      journeyOrbit.style.setProperty('--journey-progress', `${((activeIndex + 1) / tabPanes.length) * 100}%`);
+      journeyOrbit.setAttribute('aria-label', `Feature category ${activeIndex + 1} of ${tabPanes.length}`);
+    }
+  }
+
   tabBtns.forEach(btn => {
+    btn.setAttribute('aria-controls', btn.dataset.target);
     btn.addEventListener('click', () => {
-      // Remove active from all
-      tabBtns.forEach(b => b.classList.remove('active'));
-      tabPanes.forEach(p => p.style.display = 'none');
-      
-      // Add active to clicked
-      btn.classList.add('active');
-      const targetId = btn.getAttribute('data-target');
-      const targetPane = document.getElementById(targetId);
-      if (targetPane) {
-        targetPane.style.display = 'block';
+      const targetPane = document.getElementById(btn.dataset.target);
+      if (!targetPane) return;
+      setActiveFeature(targetPane.id);
+      if (!desktopJourney.matches) {
+        targetPane.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
+
+  if (featureStory && tabPanes.length) {
+    let wheelLocked = false;
+    const advanceJourney = event => {
+      if (!desktopJourney.matches || !featureJourneyOpen) return;
+      const bounds = featureStory.getBoundingClientRect();
+      if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) return;
+      const direction = Math.sign(event.deltaY);
+      const currentIndex = Array.from(tabPanes).findIndex(pane => pane.classList.contains('is-current'));
+      const nextIndex = currentIndex + direction;
+      if (nextIndex < 0 || nextIndex >= tabPanes.length) {
+        event.preventDefault();
+        closeFeatureJourney();
+        return;
+      }
+      event.preventDefault();
+      if (wheelLocked || Math.abs(event.deltaY) < 8) return;
+      wheelLocked = true;
+      setActiveFeature(tabPanes[nextIndex].id);
+      window.setTimeout(() => { wheelLocked = false; }, 650);
+    };
+    window.addEventListener('wheel', advanceJourney, { passive: false });
+    desktopJourney.addEventListener('change', () => setActiveFeature('frt-cat-1'));
+    setActiveFeature('frt-cat-1');
+  }
