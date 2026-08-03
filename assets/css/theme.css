@@ -476,7 +476,7 @@ main, section, .section, .section-sm, .section-lg {
 }
 
 .navbar.scrolled {
-  background: var(--light-glass);
+  /* background: var(--light-glass); */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: var(--shadow-sm);
@@ -488,7 +488,11 @@ main, section, .section, .section-sm, .section-lg {
   align-items: center;
   justify-content: space-between;
 }
-
+.navbar.scrolled > div.container{
+  background: var(--light-glass);
+  padding: 12px;
+  border-radius: 14px;
+}
 .navbar-brand {
   font-family: var(--font-display);
   font-size: 1.5rem;
