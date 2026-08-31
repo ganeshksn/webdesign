@@ -28,6 +28,45 @@
     .svc-icon.navy{background:rgba(42,18,4,.08);color:#2A1204;}
     .svc-icon.rose{background:rgba(244,63,94,.10);color:#F43F5E;}
     .svc-icon.amber{background:rgba(245,158,11,.12);color:#D97706;}
+    .request-btn{margin-top:1rem;}
+    .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(42,18,4,.85);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;pointer-events:none;transition:opacity var(--trans-base);}
+    .modal-overlay.active{opacity:1;pointer-events:all;}
+    .modal-content{background:#fff;border-radius:24px;padding:2.5rem;width:92%;max-width:440px;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);transform:translateY(30px) scale(.97);transition:transform var(--trans-base);}
+    .modal-overlay.active .modal-content{transform:translateY(0) scale(1);}
+    .modal-content h4{font-family:'Outfit',sans-serif;font-weight:700;margin-bottom:.5rem;font-size:1.4rem;}
+    .modal-content .modal-subtitle{color:var(--text-secondary);font-size:.92rem;margin-bottom:1.5rem;line-height:1.5;}
+    .modal-content .modal-subtitle strong{color:var(--primary);font-weight:600;}
+    .modal-content .form-control{margin-bottom:1rem;border-radius:14px;border:1.5px solid rgba(42,18,4,.1);padding:.85rem 1.1rem;font-size:.95rem;transition:border-color var(--trans-fast),box-shadow var(--trans-fast);}
+    .modal-content .form-control:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(232,87,30,.12);outline:none;}
+    .modal-content textarea.form-control{min-height:110px;resize:vertical;}
+    .modal-content .btn-submit{background:#25D366;border-color:#25D366;color:#fff;font-weight:600;padding:.9rem;border-radius:14px;font-size:1rem;transition:transform var(--trans-fast),box-shadow var(--trans-fast);}
+    .modal-content .btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,.35);}
+    .modal-content .btn-cancel{border-radius:14px;padding:.85rem;font-weight:600;border:1.5px solid rgba(42,18,4,.1);color:var(--text-secondary);background:#fff;transition:all var(--trans-fast);}
+    .modal-content .btn-cancel:hover{background:rgba(42,18,4,.03);border-color:rgba(42,18,4,.2);}
+    .modal-close-icon{position:absolute;top:1.2rem;right:1.2rem;width:36px;height:36px;border-radius:50%;background:rgba(42,18,4,.05);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--trans-fast);color:var(--text-secondary);font-size:1.1rem;}
+    .modal-close-icon:hover{background:rgba(42,18,4,.1);}
+    .modal-header-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#FF6B2B,#F5A623);display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:#fff;margin-bottom:1.2rem;box-shadow:0 8px 24px rgba(255,107,43,.25);}
+    .modal-content{position:relative;}
+
+    /* Dropdown */
+    .dropdown{position:relative;}
+    .nav-item.dropdown .dropdown-toggle{display:inline-flex !important;align-items:center;gap:.35rem;cursor:pointer;text-decoration:none;background:none;border:none;font:inherit;padding:0;white-space:nowrap;flex-shrink:0;}
+    .dropdown-toggle::after{content:'▾';font-size:.65rem;margin-left:.3rem;transition:transform var(--trans-fast),opacity var(--trans-fast);flex-shrink:0;display:inline-block;}
+    .dropdown.show .dropdown-toggle::after{transform:rotate(180deg);}
+    .dropdown-menu{position:absolute;top:100%;left:0;background:#fff;border-radius:16px;padding:.5rem 0;min-width:220px;box-shadow:var(--shadow-lg);border:1px solid rgba(42,18,4,.08);opacity:0;visibility:hidden;transform:translateY(8px);transition:all var(--trans-base);z-index:1001;margin-top:.4rem;}
+    .dropdown-menu li{list-style:none;margin:0;padding:0;}
+    .dropdown-menu a{display:block;padding:.6rem 1.2rem;color:var(--text-secondary);font-size:.92rem;font-weight:500;transition:all var(--trans-fast);text-decoration:none;white-space:nowrap;}
+    .dropdown-menu a:hover{background:rgba(232,87,30,.06);color:var(--primary);}
+    .dropdown-menu a.active{color:var(--primary);font-weight:600;background:rgba(232,87,30,.04);}
+    @media (max-width: 991px){
+      .dropdown-menu{position:static;visibility:visible;opacity:1;transform:none;box-shadow:none;border:none;padding:0;margin:0;min-width:0;background:transparent;display:none;border-radius:0;}
+      .dropdown.show .dropdown-menu{display:block;}
+      .dropdown-menu a{padding:.5rem 0 .5rem 1rem;font-size:.9rem;}
+      .dropdown-toggle::after{font-size:.7rem;flex-shrink:0;}
+    }
+    @media (min-width: 992px){
+      .dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+    }
   </style>
 </head>
 <body>
@@ -36,18 +75,63 @@
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="navbar-brand">GREAT<span class="text-primary">INDIAN</span></a>
-      <button class="navbar-toggler" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <button class="navbar-toggler" id="sidebarToggler" aria-label="Open menu"><span class="navbar-toggler-icon"></span></button>
       <div class="navbar-collapse" id="navbarContent">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item active"><a href="services.html" class="nav-link">Services</a></li>
+          <li class="nav-item dropdown">
+            <a href="services.html" class="nav-link dropdown-toggle">Services</a>
+            <ul class="dropdown-menu">
+              <li><a href="web-design.html">Web Design</a></li>
+              <li><a href="web-development.html">Web Development</a></li>
+              <li><a href="seo-performance.html">SEO &amp; Performance</a></li>
+              <li><a href="website-security.html">Website Security</a></li>
+              <li><a href="wordpress-security.html">WordPress Security</a></li>
+              <li><a href="wordpress-themes-plugins.html">WordPress Themes &amp; Plugins</a></li>
+              <li><a href="digital-marketing.html">Digital Marketing</a></li>
+              <li><a href="mobile-apps.html">Mobile Apps</a></li>
+            </ul>
+          </li>
           <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
         <div class="ml-auto header-actions"><div class="gst-badge"><span class="mai-shield-checkmark-outline"></span> GSTIN: 37BSXPG8692N1ZE</div><a href="contact.html" class="btn btn-quote">Request quote</a></div>
       </div>
     </div>
   </nav>
+
+  <!-- Mobile Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="navbar-brand">GREAT<span class="text-primary">INDIAN</span></a>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="sidebar-dropdown">
+        <a href="services.html" class="sidebar-dropdown-toggle">Services</a>
+        <ul class="sidebar-dropdown-menu">
+          <li><a href="web-design.html">Web Design</a></li>
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="seo-performance.html">SEO &amp; Performance</a></li>
+          <li><a href="website-security.html">Website Security</a></li>
+          <li><a href="wordpress-security.html">WordPress Security</a></li>
+          <li><a href="wordpress-themes-plugins.html">WordPress Themes &amp; Plugins</a></li>
+          <li><a href="digital-marketing.html">Digital Marketing</a></li>
+          <li><a href="mobile-apps.html">Mobile Apps</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="sidebar-actions">
+      <div class="gst-badge"><span class="mai-shield-checkmark-outline"></span> GSTIN: 37BSXPG8692N1ZE</div>
+      <a href="contact.html" class="btn btn-quote">Request quote</a>
+    </div>
+  </div>
+
   <div class="page-hero">
     <div class="container text-center">
       <div class="badge-pill">What We Offer</div>
@@ -70,7 +154,8 @@
             <div class="svc-icon orange"><span class="mai-desktop-outline"></span></div>
             <h5 class="mb-2">Web Design</h5>
             <p class="text-secondary mb-4">Visually stunning, brand-aligned designs with glassmorphism, micro-animations, and premium aesthetics that convert.</p>
-            <a href="contact.html" class="btn btn-outline w-100 mt-auto">Get Started</a>
+            <a href="web-design.html" class="btn btn-outline w-100 mt-auto">Learn More</a>
+            <button class="btn btn-primary w-100 request-service-btn" data-service="Web Design" style="margin-top:1rem;">Request This Service</button>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
@@ -78,7 +163,8 @@
             <div class="svc-icon teal"><span class="mai-code-working"></span></div>
             <h5 class="mb-2">Web Development</h5>
             <p class="text-secondary mb-4">Scalable native-code builds with zero dependencies — hitting 100 Core Web Vitals every single time.</p>
-            <a href="contact.html" class="btn btn-outline w-100 mt-auto">Get Started</a>
+            <a href="web-development.html" class="btn btn-outline w-100 mt-auto">Learn More</a>
+            <button class="btn btn-primary w-100 request-service-btn" data-service="Web Development" style="margin-top:1rem;">Request This Service</button>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
@@ -86,7 +172,8 @@
             <div class="svc-icon violet"><span class="mai-rocket-outline"></span></div>
             <h5 class="mb-2">SEO &amp; Performance</h5>
             <p class="text-secondary mb-4">Technical SEO, schema markup, and site-speed optimisation that moves you to the top of search results.</p>
-            <a href="contact.html" class="btn btn-outline w-100 mt-auto">Get Started</a>
+            <a href="seo-performance.html" class="btn btn-outline w-100 mt-auto">Learn More</a>
+            <button class="btn btn-primary w-100 request-service-btn" data-service="SEO &amp; Performance" style="margin-top:1rem;">Request This Service</button>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
@@ -94,7 +181,8 @@
             <div class="svc-icon navy"><span class="mai-shield-checkmark-outline"></span></div>
             <h5 class="mb-2">Website Security</h5>
             <p class="text-secondary mb-4">Enterprise-grade security audits, SSL management, intrusion detection, and hardening to keep your website safe 24/7.</p>
-            <a href="contact.html" class="btn btn-outline w-100 mt-auto">Get Started</a>
+            <a href="website-security.html" class="btn btn-outline w-100 mt-auto">Learn More</a>
+            <button class="btn btn-primary w-100 request-service-btn" data-service="Website Security" style="margin-top:1rem;">Request This Service</button>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
@@ -102,7 +190,8 @@
             <div class="svc-icon amber"><span class="mai-logo-wordpress"></span></div>
             <h5 class="mb-2">WordPress Security</h5>
             <p class="text-secondary mb-4">Hardened WordPress installations, malware removal, firewall setup, and ongoing vulnerability patching to keep your site bulletproof.</p>
-            <a href="contact.html" class="btn btn-outline w-100 mt-auto">Get Started</a>
+            <a href="wordpress-security.html" class="btn btn-outline w-100 mt-auto">Learn More</a>
+            <button class="btn btn-primary w-100 request-service-btn" data-service="WordPress Security" style="margin-top:1rem;">Request This Service</button>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
@@ -110,7 +199,8 @@
             <div class="svc-icon orange"><span class="mai-color-palette-outline"></span></div>
             <h5 class="mb-2">WordPress Themes &amp; Plugins</h5>
             <p class="text-secondary mb-4">Custom WordPress themes and plugins built from scratch — pixel-perfect, lightweight, and fully tailored to your brand and business logic.</p>
-            <a href="contact.html" class="btn btn-outline w-100 mt-auto">Get Started</a>
+            <a href="wordpress-themes-plugins.html" class="btn btn-outline w-100 mt-auto">Learn More</a>
+            <button class="btn btn-primary w-100 request-service-btn" data-service="WordPress Themes &amp; Plugins" style="margin-top:1rem;">Request This Service</button>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
@@ -119,7 +209,8 @@
             <div class="svc-icon rose"><span class="mai-bar-chart-outline"></span></div>
             <h5 class="mb-2">Digital Marketing</h5>
             <p class="text-secondary mb-4">Full-scale marketing campaigns — SEO content, paid ads, social media, and email automation. Will be launched soon.</p>
-            <span class="btn btn-outline w-100 mt-auto" style="border-color:rgba(42,18,4,.15);color:rgba(42,18,4,.35);">Will Be Launched Soon</span>
+            <a href="digital-marketing.html" class="btn btn-outline w-100 mt-auto" style="border-color:rgba(42,18,4,.15);color:rgba(42,18,4,.35);">Will Be Launched Soon</a>
+            <button class="btn btn-primary w-100 request-service-btn" data-service="Digital Marketing" style="margin-top:1rem;">Request This Service</button>
           </div>
         </div>
         <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
@@ -128,7 +219,8 @@
             <div class="svc-icon navy"><span class="mai-phone-portrait-outline"></span></div>
             <h5 class="mb-2">Mobile Apps</h5>
             <p class="text-secondary mb-4">Native mobile experiences for Android and iOS. Currently our lowest priority — contact us for timelines.</p>
-            <a href="contact.html" class="btn btn-outline w-100 mt-auto" style="pointer-events:all;">Enquire</a>
+            <a href="mobile-apps.html" class="btn btn-outline w-100 mt-auto" style="pointer-events:all;">Enquire</a>
+            <button class="btn btn-primary w-100 request-service-btn" data-service="Mobile Apps" style="margin-top:1rem;">Request This Service</button>
           </div>
         </div>
       </div>
@@ -820,6 +912,31 @@
   </div>
 </main>
 
+<!-- Service Request Modal -->
+<div id="serviceRequestModal" class="modal-overlay">
+  <div class="modal-content">
+    <button type="button" class="modal-close-icon" id="closeServiceModalBtn" aria-label="Close modal">&times;</button>
+    <div class="modal-header-icon">
+      <span class="mai-logo-whatsapp"></span>
+    </div>
+    <h4 class="mb-2">Request Service</h4>
+    <p class="modal-subtitle">Interested in <strong id="modalServiceName"></strong>? Fill out the form below and we'll get back to you shortly.</p>
+    <form id="serviceRequestForm" novalidate>
+      <div class="hpot" style="position:absolute;left:-5000px;">
+        <label>Human check: <input type="text" name="human" tabindex="-1" autocomplete="off"></label>
+      </div>
+      <input type="text" class="form-control" id="reqName" placeholder="Your Full Name" required>
+      <input type="email" class="form-control" id="reqEmail" placeholder="Your Email Address" required>
+      <input type="tel" class="form-control" id="reqPhone" placeholder="Your Phone Number" required>
+      <textarea class="form-control" id="reqMessage" placeholder="Tell us about your project requirements" required></textarea>
+      <button type="submit" class="btn btn-submit w-100 mt-3">
+        <span class="mai-logo-whatsapp mr-2"></span> Send via WhatsApp
+      </button>
+      <button type="button" id="closeServiceModalBtn2" class="btn btn-cancel w-100 mt-2">Cancel</button>
+    </form>
+  </div>
+</div>
+
 <footer class="page-footer">
   <div class="container">
     <div class="row justify-content-between mb-5">
@@ -870,5 +987,91 @@
   </div>
 </footer>
 <script src="/assets/js/theme.js" defer></script>
+<script>
+(function() {
+  'use strict';
+  const modal = document.getElementById('serviceRequestModal');
+  const modalServiceName = document.getElementById('modalServiceName');
+  const closeBtn = document.getElementById('closeServiceModalBtn');
+  const closeBtn2 = document.getElementById('closeServiceModalBtn2');
+  const form = document.getElementById('serviceRequestForm');
+  let currentService = '';
+
+  function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.request-service-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentService = btn.getAttribute('data-service') || 'a service';
+      modalServiceName.textContent = currentService;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  [closeBtn, closeBtn2].forEach(btn => {
+    if (btn) btn.addEventListener('click', closeModal);
+  });
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('reqName').value.trim();
+    const email = document.getElementById('reqEmail').value.trim();
+    const phone = document.getElementById('reqPhone').value.trim();
+    const message = document.getElementById('reqMessage').value.trim();
+
+    if (!name || !email || !phone || !message) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    let waMessage = `Hello GreatIndian WebDesigners,%0A%0A`;
+    waMessage += `I would like to request information about: *${currentService}*%0A%0A`;
+    waMessage += `*Name:* ${name}%0A`;
+    waMessage += `*Email:* ${email}%0A`;
+    waMessage += `*Phone:* ${phone}%0A`;
+    waMessage += `*Message:* ${message}`;
+
+    window.open(`https://wa.me/801234567890?text=${waMessage}`, '_blank');
+    closeModal();
+    form.reset();
+  });
+
+    (function() {
+      const sidebar = document.getElementById('mobileSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const toggler = document.getElementById('sidebarToggler');
+      const closeBtn = document.getElementById('sidebarClose');
+
+      function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (toggler) toggler.addEventListener('click', openSidebar);
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (overlay) overlay.addEventListener('click', closeSidebar);
+
+      document.querySelectorAll('.sidebar-dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggle.parentElement.classList.toggle('open');
+        });
+      });
+    })();
+})();
+</script>
 </body>
 </html>

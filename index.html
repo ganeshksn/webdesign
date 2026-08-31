@@ -643,6 +643,27 @@
       }
     }
   </style>
+
+  <style>
+    /* Dropdown */
+    .dropdown{position:relative;}
+    .nav-item.dropdown .dropdown-toggle{display:inline-flex !important;align-items:center;gap:.35rem;cursor:pointer;text-decoration:none;background:none;border:none;font:inherit;padding:0;white-space:nowrap;flex-shrink:0;}
+    .dropdown-toggle::after{content:'▾';font-size:.65rem;margin-left:.3rem;transition:transform var(--trans-fast),opacity var(--trans-fast);display:inline-block;flex-shrink:0;}
+    .dropdown.show .dropdown-toggle::after{transform:rotate(180deg);}
+    .dropdown-menu{position:absolute;top:100%;left:0;background:#fff;border-radius:16px;padding:.5rem 0;min-width:220px;box-shadow:var(--shadow-lg);border:1px solid rgba(42,18,4,.08);opacity:0;visibility:hidden;transform:translateY(8px);transition:all var(--trans-base);z-index:1001;margin-top:.4rem;}
+    .dropdown-menu li{list-style:none;margin:0;padding:0;}
+    .dropdown-menu a{display:block;padding:.6rem 1.2rem;color:var(--text-secondary);font-size:.92rem;font-weight:500;transition:all var(--trans-fast);text-decoration:none;white-space:nowrap;}
+    .dropdown-menu a:hover{background:rgba(232,87,30,.06);color:var(--primary);}
+    @media (max-width: 991px){
+      .dropdown-menu{position:static;visibility:visible;opacity:1;transform:none;box-shadow:none;border:none;padding:0;margin:0;min-width:0;background:transparent;display:none;border-radius:0;}
+      .dropdown.show .dropdown-menu{display:block;}
+      .dropdown-menu a{padding:.5rem 0 .5rem 1rem;font-size:.9rem;}
+      .dropdown-toggle::after{font-size:.7rem;flex-shrink:0;display:inline-block;}
+    }
+    @media (min-width: 992px){
+      .dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+    }
+  </style>
 </head>
 
 <body>
@@ -653,20 +674,64 @@
     <nav class="navbar">
       <div class="container">
         <a href="index.html" class="navbar-brand">GREAT<span class="text-primary">INDIAN</span></a>
-        <button class="navbar-toggler" aria-label="Toggle navigation">
+        <button class="navbar-toggler" id="sidebarToggler" aria-label="Open menu">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse" id="navbarContent">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+            <li class="nav-item dropdown">
+              <a href="services.html" class="nav-link dropdown-toggle">Services</a>
+              <ul class="dropdown-menu">
+                <li><a href="web-design.html">Web Design</a></li>
+                <li><a href="web-development.html">Web Development</a></li>
+                <li><a href="seo-performance.html">SEO &amp; Performance</a></li>
+                <li><a href="website-security.html">Website Security</a></li>
+                <li><a href="wordpress-security.html">WordPress Security</a></li>
+                <li><a href="wordpress-themes-plugins.html">WordPress Themes &amp; Plugins</a></li>
+                <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                <li><a href="mobile-apps.html">Mobile Apps</a></li>
+              </ul>
+            </li>
             <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
           </ul>
           <div class="ml-auto header-actions"><div class="gst-badge"><span class="mai-shield-checkmark-outline"></span> GSTIN: 37BSXPG8692N1ZE</div><a href="contact.html" class="btn btn-quote">Request quote</a></div>
         </div>
       </div>
     </nav>
+
+  <!-- Mobile Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="navbar-brand">GREAT<span class="text-primary">INDIAN</span></a>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="sidebar-dropdown">
+        <a href="services.html" class="sidebar-dropdown-toggle">Services</a>
+        <ul class="sidebar-dropdown-menu">
+          <li><a href="web-design.html">Web Design</a></li>
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="seo-performance.html">SEO &amp; Performance</a></li>
+          <li><a href="website-security.html">Website Security</a></li>
+          <li><a href="wordpress-security.html">WordPress Security</a></li>
+          <li><a href="wordpress-themes-plugins.html">WordPress Themes &amp; Plugins</a></li>
+          <li><a href="digital-marketing.html">Digital Marketing</a></li>
+          <li><a href="mobile-apps.html">Mobile Apps</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="sidebar-actions">
+      <div class="gst-badge"><span class="mai-shield-checkmark-outline"></span> GSTIN: 37BSXPG8692N1ZE</div>
+      <a href="contact.html" class="btn btn-quote">Request quote</a>
+    </div>
+  </div>
 
     <!-- ── HERO ─────────────────────────────────────────────────────── -->
     <section class="hero" aria-label="Hero">
@@ -1128,6 +1193,36 @@
             }
           });
         }
+      });
+    })();
+
+    (function() {
+      const sidebar = document.getElementById('mobileSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const toggler = document.getElementById('sidebarToggler');
+      const closeBtn = document.getElementById('sidebarClose');
+
+      function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (toggler) toggler.addEventListener('click', openSidebar);
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (overlay) overlay.addEventListener('click', closeSidebar);
+
+      document.querySelectorAll('.sidebar-dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggle.parentElement.classList.toggle('open');
+        });
       });
     })();
   </script>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Scalable web development services — native-code builds with zero dependencies, achieving 100 Lighthouse scores and blazing-fast Core Web Vitals every time.">
+  <meta name="keywords" content="web development, full stack development, custom web development, website development company India, scalable web apps, performance web development">
+  <meta property="og:title" content="Web Development Services — GreatIndian WebDesigners">
+  <meta property="og:site_name" content="GreatIndian WebDesigners">
+  <meta property="og:url" content="https://webdesign.greatindian.net/web-development.html">
+  <meta property="og:description" content="Scalable web development with native-code builds, zero dependencies, and 100 Lighthouse scores. High-performance websites that scale.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://webdesign.greatindian.net/assets/img/bg_image_1.png">
+  <title>Web Development Services | GreatIndian WebDesigners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/maicons.css">
+  <link rel="stylesheet" href="/assets/css/theme.css">
+  <link rel="preload" href="/assets/img/bg_image_1.png" as="image">
+  <style>
+    .page-hero{background:linear-gradient(135deg,#2A1204 0%,#1A1535 100%);padding:10rem 0 5rem;position:relative;overflow:hidden;}
+    .page-hero::after{content:'';position:absolute;top:-40px;right:-20px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,43,.18) 0%,transparent 70%);}
+    @media (max-width: 767px) { .page-hero::after { display: none; } }
+    .page-hero .container{position:relative;z-index:1;}
+    .section{padding:5rem 0;}.section-sm{padding:3rem 0;}
+    .grad-text{background:linear-gradient(90deg,#FF6B2B,#F5A623);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .svc-icon{width:64px;height:64px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1.5rem;}
+    .svc-icon.orange{background:rgba(232,87,30,.12);color:var(--text-primary);}
+    .svc-icon.teal{background:rgba(245,166,35,.12);color:var(--text-primary);}
+    .svc-icon.violet{background:rgba(124,58,237,.12);color:var(--text-primary);}
+    .svc-icon.navy{background:rgba(42,18,4,.08);color:#2A1204;}
+    .svc-icon.rose{background:rgba(244,63,94,.10);color:#F43F5E;}
+    .svc-icon.amber{background:rgba(245,158,11,.12);color:#D97706;}
+    .process-card{background:#fff;border-radius:20px;padding:2rem;border:1px solid rgba(42,18,4,.07);box-shadow:var(--shadow-sm);text-align:center;height:100%;transition:transform var(--trans-base),box-shadow var(--trans-base);}
+    .process-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);}
+    .process-card__num{font-family:'Outfit',sans-serif;font-size:3.5rem;font-weight:800;background:linear-gradient(90deg,#FF6B2B,#F5A623);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.5rem;}
+    .tech-tag{display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1px solid rgba(42,18,4,.07);border-radius:50rem;padding:.4rem .9rem;font-size:.85rem;color:var(--text-primary);box-shadow:var(--shadow-sm);}
+    .breadcrumb{padding:1rem 0;font-size:.9rem;color:rgba(255,255,255,.6);}
+    .breadcrumb a{color:rgba(255,255,255,.85);text-decoration:none;}
+    .breadcrumb a:hover{color:#fff;}
+    /* Dropdown */
+    .dropdown{position:relative;}
+    .nav-item.dropdown .dropdown-toggle{display:inline-flex !important;align-items:center;gap:.35rem;cursor:pointer;text-decoration:none;background:none;border:none;font:inherit;padding:0;white-space:nowrap;flex-shrink:0;}
+    .dropdown-toggle::after{content:'▾';font-size:.65rem;margin-left:.3rem;transition:transform var(--trans-fast),opacity var(--trans-fast);display:inline-block;flex-shrink:0;}
+    .dropdown.show .dropdown-toggle::after{transform:rotate(180deg);}
+    .dropdown-menu{position:absolute;top:100%;left:0;background:#fff;border-radius:16px;padding:.5rem 0;min-width:220px;box-shadow:var(--shadow-lg);border:1px solid rgba(42,18,4,.08);opacity:0;visibility:hidden;transform:translateY(8px);transition:all var(--trans-base);z-index:1001;margin-top:.4rem;}
+    .dropdown-menu li{list-style:none;margin:0;padding:0;}
+    .dropdown-menu a{display:block;padding:.6rem 1.2rem;color:var(--text-secondary);font-size:.92rem;font-weight:500;transition:all var(--trans-fast);text-decoration:none;white-space:nowrap;}
+    .dropdown-menu a:hover{background:rgba(232,87,30,.06);color:var(--primary);}
+    @media (max-width: 991px){
+      .dropdown-menu{position:static;visibility:visible;opacity:1;transform:none;box-shadow:none;border:none;padding:0;margin:0;min-width:0;background:transparent;display:none;border-radius:0;}
+      .dropdown.show .dropdown-menu{display:block;}
+      .dropdown-menu a{padding:.5rem 0 .5rem 1rem;font-size:.9rem;}
+      .dropdown-toggle::after{font-size:.7rem;flex-shrink:0;display:inline-block;}
+    }
+    @media (min-width: 992px){
+      .dropdown:hover .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Web Development Services — GreatIndian WebDesigners",
+    "url": "https://webdesign.greatindian.net/web-development.html",
+    "description": "Scalable web development with native-code builds, zero dependencies, and 100 Lighthouse scores. High-performance websites that scale.",
+    "publisher": { "@type": "Organization", "name": "GreatIndian WebDesigners", "url": "https://webdesign.greatindian.net/" },
+    "inLanguage": "en"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Web Development",
+    "provider": { "@type": "Organization", "name": "GreatIndian WebDesigners", "url": "https://webdesign.greatindian.net/" },
+    "description": "Scalable native-code builds with zero dependencies, hitting 100 Lighthouse scores and blazing-fast Core Web Vitals.",
+    "areaServed": "IN"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://webdesign.greatindian.net/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://webdesign.greatindian.net/services.html" },
+      { "@type": "ListItem", "position": 3, "name": "Web Development" }
+    ]
+  }
+  </script>
+</head>
+<body>
+<div class="back-to-top"></div>
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">GREAT<span class="text-primary">INDIAN</span></a>
+      <button class="navbar-toggler" id="sidebarToggler" aria-label="Open menu"><span class="navbar-toggler-icon"></span></button>
+      <div class="navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item dropdown">
+              <a href="services.html" class="nav-link dropdown-toggle">Services</a>
+              <ul class="dropdown-menu">
+                <li><a href="web-design.html">Web Design</a></li>
+                <li><a href="web-development.html">Web Development</a></li>
+                <li><a href="seo-performance.html">SEO &amp; Performance</a></li>
+                <li><a href="website-security.html">Website Security</a></li>
+                <li><a href="wordpress-security.html">WordPress Security</a></li>
+                <li><a href="wordpress-themes-plugins.html">WordPress Themes &amp; Plugins</a></li>
+                <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                <li><a href="mobile-apps.html">Mobile Apps</a></li>
+              </ul>
+            </li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="ml-auto header-actions"><div class="gst-badge"><span class="mai-shield-checkmark-outline"></span> GSTIN: 37BSXPG8692N1ZE</div><a href="contact.html" class="btn btn-quote">Request quote</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <!-- Mobile Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="navbar-brand">GREAT<span class="text-primary">INDIAN</span></a>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="sidebar-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li class="sidebar-dropdown">
+        <a href="services.html" class="sidebar-dropdown-toggle">Services</a>
+        <ul class="sidebar-dropdown-menu">
+          <li><a href="web-design.html">Web Design</a></li>
+          <li><a href="web-development.html">Web Development</a></li>
+          <li><a href="seo-performance.html">SEO &amp; Performance</a></li>
+          <li><a href="website-security.html">Website Security</a></li>
+          <li><a href="wordpress-security.html">WordPress Security</a></li>
+          <li><a href="wordpress-themes-plugins.html">WordPress Themes &amp; Plugins</a></li>
+          <li><a href="digital-marketing.html">Digital Marketing</a></li>
+          <li><a href="mobile-apps.html">Mobile Apps</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="sidebar-actions">
+      <div class="gst-badge"><span class="mai-shield-checkmark-outline"></span> GSTIN: 37BSXPG8692N1ZE</div>
+      <a href="contact.html" class="btn btn-quote">Request quote</a>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a> &rsaquo; <a href="services.html">Services</a> &rsaquo; Web Development
+      </nav>
+      <div class="text-center">
+        <div class="badge-pill">Development Services</div>
+        <h1 class="display-3 mb-3" style="color:#fff;">Web <span class="grad-text">Development</span></h1>
+        <p class="text-lg" style="color:rgba(255,255,255,.65);max-width:640px;margin:0 auto;">Scalable native-code builds with zero dependencies — hitting 100 Lighthouse scores and blazing-fast Core Web Vitals every single time.</p>
+        <div class="mt-4">
+          <a href="contact.html" class="btn btn-primary" style="margin-right:.75rem;">Get a Quote</a>
+          <a href="#features" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.3);">Explore Features</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="section">
+    <div class="container">
+      <div class="text-center mb-5 wow fadeInUp">
+        <div class="badge-pill badge-pill-teal mb-3">Engineering Excellence</div>
+        <h2 class="display-3 mb-3">Code that <span class="text-primary">scales</span></h2>
+        <p class="text-secondary text-lg" style="max-width:600px;margin:0 auto;">We write clean, maintainable, and high-performance code using modern standards and best practices.</p>
+      </div>
+      <div class="row" id="features">
+        <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+          <div class="service-card">
+            <div class="svc-icon orange"><span class="mai-code-working"></span></div>
+            <h5 class="mb-2">Zero Dependencies</h5>
+            <p class="text-secondary mb-4">No heavy frameworks, no bloat. Pure, optimized code that loads instantly and performs flawlessly under pressure.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+          <div class="service-card">
+            <div class="svc-icon teal"><span class="mai-speedometer-outline"></span></div>
+            <h5 class="mb-2">100 Lighthouse Score</h5>
+            <p class="text-secondary mb-4">We consistently achieve perfect scores across Performance, Accessibility, Best Practices, and SEO on every project.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+          <div class="service-card">
+            <div class="svc-icon violet"><span class="mai-cloud-outline"></span></div>
+            <h5 class="mb-2">Scalable Architecture</h5>
+            <p class="text-secondary mb-4">Built to grow with your business. Clean architecture patterns that make scaling and adding features effortless.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section bg-light">
+    <div class="container">
+      <div class="text-center mb-5 wow fadeInUp">
+        <div class="badge-pill mb-3">Tech Stack</div>
+        <h2 class="display-3 mb-3">Modern <span class="text-primary">technologies</span></h2>
+        <p class="text-secondary text-lg" style="max-width:560px;margin:0 auto;">We leverage the best tools and frameworks to build future-proof web experiences.</p>
+      </div>
+      <div class="text-center">
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <span class="tech-tag"><span class="mai-code-working"></span> HTML5</span>
+          <span class="tech-tag"><span class="mai-eyedrop-outline"></span> CSS3 / SCSS</span>
+          <span class="tech-tag"><span class="mai-javascript"></span> Vanilla JavaScript</span>
+          <span class="tech-tag"><span class="mai-server-outline"></span> Node.js</span>
+          <span class="tech-tag"><span class="mai-database-outline"></span> PostgreSQL</span>
+          <span class="tech-tag"><span class="mai-cloud-outline"></span> AWS / Vercel</span>
+          <span class="tech-tag"><span class="mai-git-commit"></span> Git / CI/CD</span>
+          <span class="tech-tag"><span class="mai-rocket-outline"></span> PWA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="container">
+      <div class="text-center mb-5 wow fadeInUp">
+        <div class="badge-pill badge-pill-teal mb-3">Why Choose Us</div>
+        <h2 class="display-3 mb-3">Why businesses <span class="text-primary">trust</span> our code</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+          <div class="why-card">
+            <div class="svc-icon orange mb-3"><span class="mai-speedometer-outline"></span></div>
+            <h5 class="mb-2">Blazing Performance</h5>
+            <p class="text-secondary mb-0">Sub-second page loads, optimized assets, and lazy loading strategies that keep users engaged and search engines happy.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+          <div class="why-card">
+            <div class="svc-icon violet mb-3"><span class="mai-shield-checkmark-outline"></span></div>
+            <h5 class="mb-2">Security by Default</h5>
+            <p class="text-secondary mb-0">OWASP-compliant code, XSS/CSRF protection, secure headers, and encrypted data handling built into every project.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 py-3 wow fadeInUp">
+          <div class="why-card">
+            <div class="svc-icon teal mb-3"><span class="mai-bulb"></span></div>
+            <h5 class="mb-2">Maintainable Codebase</h5>
+            <p class="text-secondary mb-0">Clean, documented, and modular code that your team can understand, extend, and maintain for years to come.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section" style="background:linear-gradient(135deg,#2A1204 0%,#1A1535 100%);position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-80px;left:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,43,.15) 0%,transparent 70%);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-60px;right:-60px;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(245,166,35,.12) 0%,transparent 70%);pointer-events:none;"></div>
+    <div class="container wow fadeInUp text-center" style="position:relative;z-index:1;">
+      <h2 class="display-3 mb-3" style="color:#fff;">Ready to build something <span class="grad-text">fast</span>?</h2>
+      <p class="text-lg mb-5" style="color:rgba(255,255,255,.65);max-width:560px;margin:0 auto;">Let's discuss your project and build a high-performance web solution that scales with your business.</p>
+      <a href="contact.html" class="btn btn-primary" style="font-size:1.05rem;padding:.9rem 2.5rem;">Start Your Project</a>
+    </div>
+  </div>
+</main>
+<footer class="page-footer">
+  <div class="container">
+    <div class="row justify-content-between mb-5">
+      <div class="col-lg-4 py-3">
+        <h3 class="mb-3">GREAT<span class="text-primary">INDIAN</span></h3>
+        <p class="mb-4" style="opacity:.7;">GreatIndian WebDesigners crafts high-performance, SEO-optimized websites that elevate your brand and engage your audience.</p>
+        <div class="sosmed-button">
+          <a href="#" aria-label="Facebook"><span class="mai-logo-facebook-f"></span></a>
+          <a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="vertical-align: -0.125em;"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><span class="mai-logo-linkedin"></span></a>
+        </div>
+      </div>
+      <div class="col-lg-2 py-3">
+        <h5 class="mb-4">Navigation</h5>
+        <ul class="footer-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 py-3">
+        <h5 class="mb-4">Company</h5>
+        <ul class="footer-menu">
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 py-3">
+        <h5 class="mb-4">Stay Updated</h5>
+        <form action="#" class="mb-3">
+          <input type="email" class="form-control mb-2" placeholder="Your email" required aria-label="Email">
+          <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="row pt-4" style="border-top:1px solid rgba(255,255,255,.08);">
+      <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+        <p class="mb-0" style="opacity:.5;font-size:.9rem;">&copy; 2026 <a href="https://webdesign.greatindian.net" class="text-white">GreatIndian WebDesigners</a>. All rights reserved. <span class="d-inline-block">GSTIN: 37BSXPG8692N1ZE</span></p>
+      </div>
+      <div class="col-md-6 text-center text-md-right">
+        <a href="#" class="text-white mr-3" style="opacity:.5;font-size:.9rem;">Privacy</a>
+        <a href="#" class="text-white" style="opacity:.5;font-size:.9rem;">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/theme.js" defer></script>
+  <script>
+    (function() {
+      const sidebar = document.getElementById('mobileSidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const toggler = document.getElementById('sidebarToggler');
+      const closeBtn = document.getElementById('sidebarClose');
+
+      function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (toggler) toggler.addEventListener('click', openSidebar);
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (overlay) overlay.addEventListener('click', closeSidebar);
+
+      document.querySelectorAll('.sidebar-dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          toggle.parentElement.classList.toggle('open');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
