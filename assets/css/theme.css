@@ -555,9 +555,6 @@ main, section, .section, .section-sm, .section-lg {
   color: var(--primary);
 }
 
-/* Dropdown toggle arrow — must not inherit the absolute-positioned underline
-   styles from .nav-link::after (the toggle also carries the .nav-link class),
-   otherwise the arrow gets pinned below the label. */
 .dropdown-toggle::after {
   position: static;
   width: auto;
@@ -565,6 +562,9 @@ main, section, .section, .section-sm, .section-lg {
   background: none;
   bottom: auto;
   left: auto;
+}
+.dropdown-toggle:hover::after {
+  width: auto;
 }
 
 .navbar-toggler {
@@ -577,25 +577,34 @@ main, section, .section, .section-sm, .section-lg {
 
 .navbar-toggler-icon {
   display: block;
-  width: 24px;
-  height: 2px;
+  width: 26px;
+  height: 3px;
   background-color: var(--dark);
+  border-radius: 6px;
   position: relative;
-  transition: background var(--trans-fast);
+  transition: background var(--trans-fast), transform var(--trans-base);
 }
 
-.navbar-toggler-icon::before, .navbar-toggler-icon::after {
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
   content: '';
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: var(--dark);
   left: 0;
-  transition: transform var(--trans-base);
+  border-radius: 6px;
+  transition: transform var(--trans-base), opacity var(--trans-base);
 }
 
-.navbar-toggler-icon::before { top: -6px; }
-.navbar-toggler-icon::after { bottom: -6px; }
+.navbar-toggler-icon::before { top: -9px; }
+.navbar-toggler-icon::after { bottom: -9px; }
+
+.navbar-toggler:hover .navbar-toggler-icon,
+.navbar-toggler:hover .navbar-toggler-icon::before,
+.navbar-toggler:hover .navbar-toggler-icon::after {
+  transform: scale(1.05);
+}
 
 @media (max-width: 991px) {
   .navbar-toggler { display: block; }
