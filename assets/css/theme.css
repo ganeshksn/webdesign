@@ -555,6 +555,18 @@ main, section, .section, .section-sm, .section-lg {
   color: var(--primary);
 }
 
+/* Dropdown toggle arrow — must not inherit the absolute-positioned underline
+   styles from .nav-link::after (the toggle also carries the .nav-link class),
+   otherwise the arrow gets pinned below the label. */
+.dropdown-toggle::after {
+  position: static;
+  width: auto;
+  height: auto;
+  background: none;
+  bottom: auto;
+  left: auto;
+}
+
 .navbar-toggler {
   display: none;
   background: transparent;
