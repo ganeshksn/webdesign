@@ -566,6 +566,9 @@ main, section, .section, .section-sm, .section-lg {
 .dropdown-toggle:hover::after {
   width: auto;
 }
+.nav-item.dropdown .dropdown-toggle::after {
+  font-size: 1.3rem;
+}
 
 .navbar-toggler {
   display: none;
